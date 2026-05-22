@@ -30,13 +30,13 @@ Ensure you have Go installed on your machine.
 ```Bash
 go mod init qubex-benchmark
 go mod tidy
-```Bash
+```
 
 Run the Benchmark:
 
 ```Bash
 go run main.go
-```Bash
+```
 
 Results:
 
