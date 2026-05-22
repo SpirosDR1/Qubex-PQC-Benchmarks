@@ -23,11 +23,11 @@ Persistent audit logging for reproducibility.
 
 ### Quick Start
 
-Prerequisites:
+**Prerequisites:**
 
 Ensure you have Go installed on your machine.
 
-```
+```bash
 go mod init qubex-benchmark
 go mod tidy
 ```
