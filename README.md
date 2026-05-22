@@ -33,7 +33,7 @@ go mod tidy
 
 Run the Benchmark:
 
-```Bash
+Bash
 go run main.go
 
 Results:
