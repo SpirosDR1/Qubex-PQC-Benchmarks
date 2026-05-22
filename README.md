@@ -27,14 +27,14 @@ Prerequisites:
 
 Ensure you have Go installed on your machine.
 
-```markdown
+```bash
 go mod init qubex-benchmark
 go mod tidy
-```markdown
+```
 
 Run the Benchmark:
 
-```Bash
+```bash
 go run main.go
 ```
 
