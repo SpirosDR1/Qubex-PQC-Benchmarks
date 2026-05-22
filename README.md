@@ -21,7 +21,7 @@ On-chain state verification (via block header synchronization).
 Persistent audit logging for reproducibility.
 
 
-Quick Start
+### Quick Start
 
 Prerequisites:
 
