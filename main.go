@@ -86,11 +86,19 @@ func main() {
 	signature, _ := sk.Sign(nil, txData, nil)
 	valid := mldsa44.Verify(pk, txData, nil, signature)
 
+	// --- DYNAMIC BLOCK LOGGING LOGIC ---
+	blockNum := "N/A"
+	if header != nil {
+		blockNum = fmt.Sprintf("%d", header.Number)
+	}
+
 	// 8. SECURE BRANDED AUDIT LOGGING
 	timestamp := time.Now().Format(time.RFC3339)
 	logFile := fmt.Sprintf("qubex_%s_audit.log", networkArg)
-	logMsg := fmt.Sprintf("[%s] BRAND: QUBEX SENTINEL | NETWORK: %s | Latency: %d ns | Valid: %v\n",
-		timestamp, networkArg, avgPQC, valid)
+
+	// Τώρα το Block γράφεται ΚΑΙ στο αρχείο .log!
+	logMsg := fmt.Sprintf("[%s] BRAND: QUBEX SENTINEL | NETWORK: %s | Latency: %d ns | Block: %s | Valid: %v\n",
+		timestamp, networkArg, avgPQC, blockNum, valid)
 
 	f, err := os.OpenFile(logFile, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err == nil {
