@@ -45,6 +45,7 @@ Verified Blockchain Height.
 Signature Verification Status.
 
 Developed for QUBEX SENTINEL Research Initiative.
+
 License: MIT
 
 ### Live Audit Proof
