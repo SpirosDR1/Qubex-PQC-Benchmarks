@@ -39,7 +39,7 @@ Ensure you have Go 1.26.3 or higher installed on your machine.
 ### Install dependencies:
 
 ```go
-git clone [https://github.com/SpirosDR1/Qubex-PQC-Benchmark.git](https://github.com/SpirosDR1/Qubex-PQC-Benchmark.git)
+git clone [https://github.com/SpirosDR1/Qubex-PQC-Benchmark.git]
 cd Qubex-PQC-Benchmark
 go mod tidy
 ```
@@ -77,7 +77,8 @@ QUBEX SENTINEL: polygon Ecosystem is Ready for PQC Deployment.
 ### Secure Audit Logging:
 
 Each run automatically appends verifiable data to a network-specific log file (e.g., qubex_polygon_audit.log or qubex_base_audit.log). The audit trail provides an immutable-like record including:
-Execution Timestamp (RFC3339)
+
+*Execution Timestamp (RFC3339)
 Targeted Network
 Average PQC Latency (ns)
 Verified Blockchain Height
