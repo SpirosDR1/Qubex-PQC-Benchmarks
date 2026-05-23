@@ -1,30 +1,21 @@
-QUBEX SENTINEL | PQC Performance Benchmark
+# QUBEX SENTINEL | PQC Performance Benchmark
 
 A high-performance audit tool designed to measure the latency impact of Post-Quantum Cryptography (PQC) on EVM-compatible networks. This utility implements ML-DSA-44 (FIPS 204) signing and utilizes on-chain verification to ensure transparency in performance metrics.
 
-Why QUBEX SENTINEL?
-
+### Why QUBEX SENTINEL?
 As blockchain infrastructure transitions toward quantum resistance, understanding the cryptographic overhead is critical. This tool provides a deterministic way to benchmark signature latency, ensuring that PQC integration doesn't bottleneck high-frequency sequencer performance.
 
-Technical Specs
-
-Algorithm: ML-DSA-44 (FIPS 204 standard).
-
-Environment: Live integration with Base Sepolia (Testnet).
-
-Metrics:
-
-Mean signing latency (in nanoseconds).
-
-On-chain state verification (via block header synchronization).
-
-Persistent audit logging for reproducibility.
-
+### Technical Specs
+* Algorithm: ML-DSA-44 (FIPS 204 standard).
+* Environment: Live integration with Base Sepolia (Testnet).
+* Metrics:
+    * Mean signing latency (in nanoseconds).
+    * On-chain state verification (via block header synchronization).
+    * Persistent audit logging for reproducibility.
 
 ### Quick Start
 
-**Prerequisites:**
-
+Prerequisites:
 Ensure you have Go installed on your machine.
 
 ```go
