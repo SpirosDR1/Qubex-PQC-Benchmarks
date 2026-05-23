@@ -52,7 +52,7 @@ go mod tidy
 
 go run main.go [network_name]
 ```
-Supported networks: base, polygon, arbitrum, optimism, bnb, mantle, blast, zksync, linea, metis, scroll 
+*Supported networks: base, polygon, arbitrum, optimism, bnb, mantle, blast, zksync, linea, metis, scroll* 
 
 ### Results:
 
