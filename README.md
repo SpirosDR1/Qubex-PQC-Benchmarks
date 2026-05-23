@@ -28,7 +28,7 @@ cd Qubex-PQC-Benchmark
 go mod tidy
 ```
 
-Run the Stress Test:
+### Run the Stress Test:
 
 ```go
 # Optional: Set a custom RPC URL for better performance
@@ -37,7 +37,7 @@ Run the Stress Test:
 go run main.go
 ```
 
-Results:
+### Results:
 
 The tool will output real-time signing latency and verify connectivity to the Base Sepolia network. Audit logs are automatically appended to qubex_benchmark.log in the local directory.
 
