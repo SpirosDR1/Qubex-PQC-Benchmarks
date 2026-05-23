@@ -19,13 +19,21 @@ Prerequisites:
 Ensure you have Go installed on your machine.
 
 ```go
-go mod init qubex-benchmark
+git clone https://github.com/SpirosDR1/Qubex-PQC-Benchmark
+cd Qubex-PQC-Benchmark
+```
+### Install dependencies:
+
+```go
 go mod tidy
 ```
 
-Run the Benchmark:
+Run the Stress Test:
 
 ```go
+# Optional: Set a custom RPC URL for better performance
+# export RPC_URL=https://your-alchemy-node-link
+
 go run main.go
 ```
 
