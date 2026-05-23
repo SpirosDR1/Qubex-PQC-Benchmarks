@@ -36,13 +36,11 @@ As blockchain infrastructure transitions toward quantum resistance, understandin
 Prerequisites:
 Ensure you have Go 1.26.3 or higher installed on your machine.
 
-```go
-git clone https://github.com/SpirosDR1/Qubex-PQC-Benchmark
-cd Qubex-PQC-Benchmark
-```
 ### Install dependencies:
 
 ```go
+git clone [https://github.com/SpirosDR1/Qubex-PQC-Benchmark.git](https://github.com/SpirosDR1/Qubex-PQC-Benchmark.git)
+cd Qubex-PQC-Benchmark
 go mod tidy
 ```
 
@@ -52,8 +50,9 @@ go mod tidy
 # Optional: Set a custom RPC URL for better performance
 # export RPC_URL=https://your-alchemy-node-link
 
-go run main.go
+go run main.go [network_name]
 ```
+Supported networks: base, polygon, arbitrum, optimism, bnb, mantle, blast, zksync, linea, metis, scroll 
 
 ### Results:
 
@@ -75,16 +74,29 @@ Developed for QUBEX SENTINEL Research Initiative.
 License: MIT
 
 ### Expected Output
-When running the benchmark, your terminal should output the live latency and verification status:
+The tool outputs real-time signing latency and verifies connectivity to the specified network.
 
 ```text
-[AUDIT] Network: Base Sepolia
-[AUDIT] PQC Signing Latency: 40149 ns
-[AUDIT] Signature Verification: true
-[AUDIT] Verified Block Height: 41883616
+--- QUBEX SENTINEL | MULTI-CHAIN PQC BENCHMARK ---
+[SYSTEM] Targeting Network: polygon
+[SYSTEM] Starting PQC Stress Test: 100000 iterations...
+--------------------------------------------------
+[AUDIT] Infrastructure: QUBEX SENTINEL ENGINE
+[AUDIT] Target Network: polygon
+[AUDIT] Avg PQC Signing Latency: 40910 ns
+[AUDIT] Signature Integrity: true (NIST ML-DSA Verified)
+[AUDIT] Verified Block Height: 38884420
+[AUDIT] Status: ALL CHECKS PASSED
+--------------------------------------------------
+QUBEX SENTINEL: polygon Ecosystem is Ready for PQC Deployment.
 ```
 
-### Live Audit Proof
-The execution metrics and network connection are verified during runtime.
+### Secure Audit Logging:
 
-![Live Audit Proof](benchmark_proof.jpg)
+Each run automatically appends verifiable data to a network-specific log file (e.g., qubex_polygon_audit.log or qubex_base_audit.log). The audit trail provides an immutable-like record including:
+Execution Timestamp (RFC3339)
+Targeted Network
+Average PQC Latency (ns)
+Verified Blockchain Height
+Signature Verification Status
+
