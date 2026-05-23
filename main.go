@@ -15,13 +15,13 @@ import (
 func main() {
 	fmt.Println("--- QUBEX SENTINEL | AUDIT-READY BENCHMARK ---")
 
-	// 1. Σύνδεση στο πραγματικό δίκτυο
+	// 1. Connect to the actual network
 	client, err := ethclient.Dial("https://sepolia.base.org")
 	if err != nil {
 		log.Fatalf("Conn Error: %v", err)
 	}
 
-	// 2. Δημιουργία PQC Κλειδιών
+	// 2. Generate PQC Keys
 	pk, sk, _ := mldsa44.GenerateKey(rand.Reader)
 	txData := []byte("QUBEX_SECURE_TRANSFER_100_USDC")
 
@@ -41,11 +41,11 @@ func main() {
 	// 5. Blockchain Proof
 	header, _ := client.HeaderByNumber(context.Background(), nil)
 
-	// 6. Επαλήθευση
+	// 6. Verification
 	signature, _ := sk.Sign(nil, txData, nil)
 	valid := mldsa44.Verify(pk, txData, nil, signature)
 
-	// 7. ΤΕΛΕΙΑ ΔΙΑΔΡΟΜΗ (Γράφει στον ίδιο φάκελο που είναι το main.go)
+	// 7. FILE PATH (Writes to the same folder where main.go is located)
 	logMsg := fmt.Sprintf("[%s] Latency: %d ns | Block: %d | Valid: %v\n",
 		time.Now().Format(time.RFC3339), avgPQC, header.Number, valid)
 
