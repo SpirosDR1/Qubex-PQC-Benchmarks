@@ -34,7 +34,7 @@ As blockchain infrastructure transitions toward quantum resistance, understandin
 ### Quick Start
 
 Prerequisites:
-Ensure you have Go installed on your machine.
+Ensure you have Go 1.26.3 or higher installed on your machine.
 
 ```go
 git clone https://github.com/SpirosDR1/Qubex-PQC-Benchmark
