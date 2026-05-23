@@ -54,25 +54,6 @@ go run main.go [network_name]
 ```
 *Supported networks: base, polygon, arbitrum, optimism, bnb, mantle, blast, zksync, linea, metis, scroll* 
 
-### Results:
-
-The tool will output real-time signing latency and verify connectivity to the Base Sepolia network. Audit logs are automatically appended to qubex_benchmark.log in the local directory.
-
-Audit Trail
-The generated qubex_benchmark.log provides an immutable-like audit trail of your performance runs, including:
-
-Execution Timestamp.
-
-Average PQC Latency.
-
-Verified Blockchain Height.
-
-Signature Verification Status.
-
-Developed for QUBEX SENTINEL Research Initiative.
-
-License: MIT
-
 ### Expected Output & Audit Trail
 The tool outputs real-time signing latency and verifies connectivity to the specified network.
 
@@ -101,4 +82,7 @@ Targeted Network
 Average PQC Latency (ns)
 Verified Blockchain Height
 Signature Verification Status
+
+### Developed for QUBEX SENTINEL Research Initiative
+License: MIT
 
