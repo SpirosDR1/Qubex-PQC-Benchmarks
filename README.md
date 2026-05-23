@@ -55,3 +55,8 @@ Signature Verification Status.
 
 Developed for QUBEX SENTINEL Research Initiative.
 License: MIT
+
+### Live Audit Proof
+The execution metrics and network connection are verified during runtime.
+
+![Live Audit Proof](benchmark_proof.jpg)
