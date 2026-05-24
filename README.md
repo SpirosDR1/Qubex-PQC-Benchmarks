@@ -17,17 +17,17 @@ As blockchain infrastructure transitions toward quantum resistance, understandin
 
 | Network | Type | Avg Signing Latency (ns) | Verification | Status |
 | :--- | :--- | :--- | :--- | :--- |
-| Base | Optimistic Rollup | 39,435 ns | On-chain | Ready |
-| BNB Smart Chain | L1 / Sidechain | 39,515 ns | On-chain | Ready |
-| Polygon (Amoy) | zkEVM / AggLayer | 40,910 ns | On-chain | Ready |
-| Linea | zkEVM | 73,139 ns | On-chain | Ready |
-| Arbitrum | Optimistic Rollup | 93,732 ns | On-chain | Ready |
-| Mantle | Optimistic Rollup | 93,823 ns | On-chain | Ready |
-| Optimism | Optimistic Rollup | 94,254 ns | On-chain | Ready |
-| Scroll | zkEVM | 96,569 ns | On-chain | Ready |
-| zkSync | ZK-Rollup | 122,292 ns | On-chain | Ready |
-| Metis | Optimistic Rollup | 129,016 ns | On-chain | Ready |
-| Blast | Optimistic Rollup | 149,901 ns | On-chain | Ready |
+| Mantle | Optimistic Rollup | 39,032 ns | On-chain | Ready |
+| Metis | Optimistic Rollup | 39,499 ns | On-chain | Ready |
+| Polygon (Amoy) | zkEVM / AggLayer | 39,616 ns | On-chain | Ready |
+| Optimism | Optimistic Rollup | 39,712 ns | On-chain | Ready |
+| Base | Optimistic Rollup | 68,244 ns | On-chain | Ready |
+| BNB Smart Chain | L1 / Sidechain | 68,630 ns | On-chain | Ready |
+| Linea | zkEVM | 93,278 ns | On-chain | Ready |
+| Arbitrum | Optimistic Rollup | 122,314 ns | On-chain | Ready |
+| Scroll | zkEVM | 122,538 ns | On-chain | Ready |
+| zkSync | ZK-Rollup | 149,699 ns | On-chain | Ready |
+| Blast | Optimistic Rollup | 230,952 ns | On-chain | Ready |
 
 *Note: Benchmarks represent live ML-DSA (Dilithium) cryptographic stress tests directly interacting with respective network RPCs.*
 
