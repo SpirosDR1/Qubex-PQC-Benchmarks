@@ -66,9 +66,9 @@ The tool outputs real-time signing latency and verifies connectivity to the spec
 --------------------------------------------------
 [AUDIT] Infrastructure: QUBEX SENTINEL ENGINE
 [AUDIT] Target Network: polygon
-[AUDIT] Avg PQC Signing Latency: 40910 ns
+[AUDIT] Avg PQC Signing Latency: 39616 ns
 [AUDIT] Signature Integrity: true (NIST ML-DSA Verified)
-[AUDIT] Verified Block Height: 38884420
+[AUDIT] Verified Block Height: 38887690
 [AUDIT] Status: ALL CHECKS PASSED
 --------------------------------------------------
 QUBEX SENTINEL: polygon Ecosystem is Ready for PQC Deployment.
