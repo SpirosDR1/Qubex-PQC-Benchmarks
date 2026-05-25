@@ -20,19 +20,20 @@ As blockchain infrastructure transitions toward quantum resistance to combat HND
 
 *Verified metrics interacting directly with respective network RPCs (May 2026).*
 
-| Network | Type | Avg Signing Latency (ns) | Verification | Status |
-| :--- | :--- | :--- | :--- | :--- |
-| Mantle | Optimistic Rollup | 39,032 ns | On-chain | Ready |
-| Metis | Optimistic Rollup | 39,499 ns | On-chain | Ready |
-| Polygon (Amoy)| zkEVM / AggLayer | 39,616 ns | On-chain | Ready |
-| Optimism | Optimistic Rollup | 39,712 ns | On-chain | Ready |
-| Base | Optimistic Rollup | 68,244 ns | On-chain | Ready |
-| BNB Smart Chain| L1 / Sidechain | 68,630 ns | On-chain | Ready |
-| Linea | zkEVM | 93,278 ns | On-chain | Ready |
-| Arbitrum | Optimistic Rollup | 122,314 ns | On-chain | Ready |
-| Scroll | zkEVM | 122,538 ns | On-chain | Ready |
-| zkSync | ZK Rollup | 149,699 ns | On-chain | Ready |
-| Blast | Optimistic Rollup | 230,952 ns | On-chain | Ready |
+| Rank | Network         | Type              | Avg Signing Latency | Verification | Status |
+| ---- | --------------- | ----------------- | ------------------- | ------------ | ------ |
+| 1    | Base            | Optimistic Rollup |           39,595 ns | On-chain     | Ready  |
+| 2    | Arbitrum        | Optimistic Rollup |           65,536 ns | On-chain     | Ready  |
+| 3    | Scroll          | zkEVM             |           91,899 ns | On-chain     | Ready  |
+| 4    | Linea           | zkEVM             |          118,647 ns | On-chain     | Ready  |
+| 5    | BNB Smart Chain | L1 / Sidechain    |          121,210 ns | On-chain     | Ready  |
+| 6    | Mantle          | Optimistic Rollup |          124,309 ns | On-chain     | Ready  |
+| 7    | zkSync          | ZK Rollup         |          127,895 ns | On-chain     | Ready  |
+| 8    | Blast           | Optimistic Rollup |          181,195 ns | On-chain     | Ready  |
+| 9    | Metis           | Optimistic Rollup |          187,759 ns | On-chain     | Ready  |
+| 10   | Optimism        | Optimistic Rollup |          246,632 ns | On-chain     | Ready  |
+| 11   | Polygon (Amoy)  | zkEVM / AggLayer  |          438,600 ns | On-chain     | Ready  |
+
 
 ## Quick Start (Verify it yourself)
 
