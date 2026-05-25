@@ -39,10 +39,14 @@ go mod tidy
 ```
 2. Run the Chaos Engine Stress Test:
 
-Supported networks: base, polygon, arbitrum, optimism, bnb, mantle, blast, zksync, linea, metis, scroll
+```bash
 go run main.go polygon
+``` 
 
-Expected Terminal Output & Audit Trail
+*Supported networks: base, polygon, arbitrum, optimism, bnb, mantle, blast, zksync, linea, metis, scroll*
+
+## Expected Terminal Output & Audit Trail
+
 The tool outputs real-time signing latency and verifies connectivity to the specified network.
 
 --- QUBEX SENTINEL | MULTI-CHAIN PQC BENCHMARK ---
