@@ -3,15 +3,21 @@
 A high-performance audit tool designed to measure the latency impact of Post-Quantum Cryptography (PQC) on EVM-compatible networks. This utility implements NIST ML-DSA-44 (FIPS 204) signing and utilizes on-chain verification to ensure transparency in performance metrics.
 
 ### Live Portals & Genesis Program
+
 * Official Portal: [qubexsentinel.com](https://qubexsentinel.com)
+
+* Live Execution Logs: [qubexsentinel.com/benchmarks.html](https://qubexsentinel.com/benchmarks.html)
+
 * Apply for Genesis Partnership (Zero-Fee Integration): [Access the Application Form Here](https://forms.gle/hmUdBiQz3PT2x8TT7)
 
 ---
 
 ## Why QUBEX SENTINEL?
+
 As blockchain infrastructure transitions toward quantum resistance to combat HNDL (Harvest Now, Decrypt Later) attacks, understanding cryptographic overhead is critical. The Chaos Engine provides a deterministic way to benchmark signature latency, ensuring that PQC integration introduces virtually zero drag to high-frequency sequencer performance.
 
 ## Multi-Chain Performance Matrix (NIST ML-DSA)
+
 *Verified metrics interacting directly with respective network RPCs (May 2026).*
 
 | Network | Type | Avg Signing Latency (ns) | Verification | Status |
@@ -29,6 +35,7 @@ As blockchain infrastructure transitions toward quantum resistance to combat HND
 | Blast | Optimistic Rollup | 230,952 ns | On-chain | Ready |
 
 ## Quick Start (Verify it yourself)
+
 Prerequisites: Ensure you have Go installed on your machine.
 
 1. Clone the repository:
@@ -89,9 +96,9 @@ Each run automatically appends verifiable data to a network-specific log file (e
 
 ## Architecture & IP Note
 
-* Pro Tip: For high-throughput L2/L3 testing, ensure your environment supports high-concurrency Go execution as decoupled by our production engine.*
+*Pro Tip: For high-throughput L2/L3 testing, ensure your environment supports high-concurrency Go execution as decoupled by our production engine.*
 
-* Security Note: This public repository contains our high-performance stress-testing engine (Go). The core PQC cryptographic logic (Python/NIST Level 5 implementations) is maintained in a private repository to protect proprietary IP. Full white-box access is granted only under NDA during commercial integration.*
+*Security Note: This public repository contains our high-performance stress-testing engine (Go). The core PQC cryptographic logic (Python/NIST Level 5 implementations) is maintained in a private repository to protect proprietary IP. Full white-box access is granted only under NDA during commercial integration.*
 
 ---
 
