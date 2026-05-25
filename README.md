@@ -49,6 +49,7 @@ go run main.go polygon
 
 The tool outputs real-time signing latency and verifies connectivity to the specified network.
 
+```bash
 --- QUBEX SENTINEL | MULTI-CHAIN PQC BENCHMARK ---
 
 [SYSTEM] Targeting Network: polygon
@@ -70,6 +71,7 @@ The tool outputs real-time signing latency and verifies connectivity to the spec
 --------------------------------------------------
 
 QUBEX SENTINEL: polygon Ecosystem is Ready for PQC Deployment.
+```
 
 ## Secure Audit Logging
 
