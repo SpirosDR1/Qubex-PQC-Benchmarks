@@ -6,7 +6,7 @@ As the Web3 ecosystem approaches the quantum migration gap, scaling protocols mu
 
 ---
 
-# QUBEX SENTINEL | PQC Performance Benchmarks (Chaos Engine)
+### QUBEX SENTINEL | PQC Performance Benchmarks (Chaos Engine)
 
 A high-performance audit tool designed to measure the latency impact of Post-Quantum Cryptography (PQC) on EVM-compatible networks. This utility implements NIST ML-DSA-44 (FIPS 204) signing and utilizes on-chain verification to ensure transparency in performance metrics.
 
