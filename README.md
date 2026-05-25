@@ -87,6 +87,14 @@ Each run automatically appends verifiable data to a network-specific log file (e
 
 * Signature Verification Status
 
+## Architecture & IP Note
+
+* Pro Tip: For high-throughput L2/L3 testing, ensure your environment supports high-concurrency Go execution as decoupled by our production engine.*
+
+* Security Note: This public repository contains our high-performance stress-testing engine (Go). The core PQC cryptographic logic (Python/NIST Level 5 implementations) is maintained in a private repository to protect proprietary IP. Full white-box access is granted only under NDA during commercial integration.*
+
+---
+
 Ready for Production?
 
 We are actively selecting Tier-1 RaaS providers and L2/L3 ecosystems for the Genesis Partnership Program (6-month zero-fee integration).
