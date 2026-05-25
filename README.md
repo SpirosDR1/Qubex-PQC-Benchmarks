@@ -48,7 +48,7 @@ go mod tidy
 2. Run the Chaos Engine Stress Test:
 
 ```go
-go run main.go polygon
+go run main.go base
 ``` 
 
 *Supported networks: base, polygon, arbitrum, optimism, bnb, mantle, blast, zksync, linea, metis, scroll*
@@ -60,30 +60,30 @@ The tool outputs real-time signing latency and verifies connectivity to the spec
 ```go
 --- QUBEX SENTINEL | MULTI-CHAIN PQC BENCHMARK ---
 
-[SYSTEM] Targeting Network: polygon
+[SYSTEM] Targeting Network: base
 
 [SYSTEM] Starting PQC Stress Test: 100000 iterations...
 
 [AUDIT] Infrastructure: QUBEX SENTINEL ENGINE
 
-[AUDIT] Target Network: polygon
+[AUDIT] Target Network: base
 
-[AUDIT] Avg PQC Signing Latency: 39616 ns
+[AUDIT] Avg PQC Signing Latency: 39595 ns
 
 [AUDIT] Signature Integrity: true (NIST ML-DSA Verified)
 
-[AUDIT] Verified Block Height: 38887690
+[AUDIT] Verified Block Height: 41981588
 
 [AUDIT] Status: ALL CHECKS PASSED
 
 --------------------------------------------------
 
-QUBEX SENTINEL: polygon Ecosystem is Ready for PQC Deployment.
+QUBEX SENTINEL: base Ecosystem is Ready for PQC Deployment.
 ```
 
 ## Secure Audit Logging
 
-Each run automatically appends verifiable data to a network-specific log file (e.g., qubex_polygon_audit.log). The audit trail provides an immutable-like record including:
+Each run automatically appends verifiable data to a network-specific log file (e.g., qubex_base_audit.log). The audit trail provides an immutable-like record including:
 
 * Execution Timestamp (RFC3339)
 
