@@ -33,7 +33,7 @@ Prerequisites: Ensure you have Go installed on your machine.
 
 1. Clone the repository:
 ```bash
-git clone [https://github.com/SpirosDR1/Qubex-PQC-Benchmarks.git](https://github.com/SpirosDR1/Qubex-PQC-Benchmarks.git)
+git clone https://github.com/SpirosDR1/Qubex-PQC-Benchmarks.git
 cd Qubex-PQC-Benchmarks
 go mod tidy
 ```
