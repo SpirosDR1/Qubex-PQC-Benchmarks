@@ -41,9 +41,9 @@ QUBEX solves this via a decoupled pre-batcher execution:
 
 ## Integration & Genesis Pilots
 
-QUBEX Sentinel is currently selecting high-TVL Tier-1 DeFi protocols for exclusive Genesis Pilot integrations prior to full OP Stack Rollup Improvement Proposal (RIP) standardization. 
+QUBEX Sentinel is currently selecting high-TVL Tier-1 DeFi protocols and Rollup-as-a-Service (RaaS) providers for exclusive Genesis Pilot integrations prior to full EVM-wide protocol standardization.
 
-Legacy architectures are mathematically deprecated. Upgrade to QUBEX to ensure total TVL sovereignty.
+Legacy ECDSA architectures across all L2/L3 networks are mathematically exposed. The choice is binary: native-proof your infrastructure with QUBEX to ensure total TVL sovereignty, or leave your ecosystem vulnerable to total extraction.
 
 ### Initiate Integration
 
