@@ -44,6 +44,8 @@ As blockchain infrastructure transitions toward quantum resistance to combat HND
 
 > Rankings Policy: All benchmarks are independently conducted under strict algorithmic isolation. QUBEX isolates the PQC lattice signature verification pipeline to maintain sub-millisecond benchmarks. Environments with over 200k ns overhead show critical state-friction that must be optimized before modular Mainnet integration.
 
+DAO Delegates & Protocol Researchers: Read the [QUBEX Genesis Framework (Migration Blueprint)](QUBEX_Genesis_Framework.md) to integrate PQC with zero downtime.
+
 ## Quick Start (Verify it yourself)
 
 Prerequisites: Ensure you have Go installed on your machine.
