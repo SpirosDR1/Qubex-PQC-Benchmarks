@@ -39,6 +39,37 @@ QUBEX solves this via a decoupled pre-batcher execution:
 3. Compress: Only verified state data reaches the op-batcher.
 4. Result: Absolute PQC integrity on L2 with zero bytes of PQC overhead added to L1 calldata.
 
+---
+
+## Omnichain Reproduction & Local Verification
+"Don't trust, verify." QUBEX Sentinel operates with absolute cryptographic transparency. Enterprise architects and protocol core developers can independently reproduce the 1.1M operations stress test locally.
+
+### Infrastructure Prerequisites
+- Go Environment: Version 1.20 or higher.
+- Hardware: Multi-core CPU. *(Warning: The benchmark is designed to force 100% CPU thread exhaustion to simulate peak enterprise sequencer loads. Proceed with caution on commercial laptops).*
+
+### Execution Protocol
+Run the following commands in your terminal to initialize the omnichain broadcaster:
+
+
+# 1. Clone the infrastructure repository
+
+```go
+git clone [https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git)
+cd YOUR_REPO_NAME
+```
+
+# 2. Synchronize cryptographic dependencies (Cloudflare CIRCL ML-DSA)
+
+```go
+go mod tidy
+```
+
+# 3. Ignite the Devnet Broadcaster
+
+```go
+go run main.go
+```
 ## Integration & Genesis Pilots
 
 QUBEX Sentinel is currently selecting high-TVL Tier-1 DeFi protocols and Rollup-as-a-Service (RaaS) providers for exclusive Genesis Pilot integrations prior to full EVM-wide protocol standardization.
