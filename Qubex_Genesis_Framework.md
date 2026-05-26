@@ -29,6 +29,6 @@ Network upgrades historically introduce systemic risks. The Genesis Framework el
 * Outcome: The network achieves full NIST Level 5 compliance, future-proofing the ecosystem against "Harvest Now, Decrypt Later" (HNDL) attacks.
 
 ## Call to Action for Ecosystem Delegates
-Technical readiness is complete. Ecosystem survival now requires protocol consensus. We invite Core Devs, Delegates, and RaaS Providers to fork this blueprint, review the benchmarks in our main repository, and open Governance Proposals (RFCs) to initiate Phase 1 in their respective testnets.
+Technical readiness is complete. Ecosystem survival now requires protocol consensus. We invite Core Devs, Delegates, and RaaS Providers to fork this blueprint, review the benchmarks in this repository, and open Governance Proposals (RFCs) to initiate Phase 1 in their respective testnets.
 
 *For integration architecture and Node Operator requirements, contact the QUBEX Core Team.*
