@@ -52,20 +52,20 @@ QUBEX solves this via a decoupled pre-batcher execution:
 Run the following commands in your terminal to initialize the omnichain broadcaster:
 
 
-# 1. Clone the infrastructure repository
+#### 1. Clone the infrastructure repository
 
 ```go
 git clone [https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git)
 cd YOUR_REPO_NAME
 ```
 
-# 2. Synchronize cryptographic dependencies (Cloudflare CIRCL ML-DSA)
+#### 2. Synchronize cryptographic dependencies (Cloudflare CIRCL ML-DSA)
 
 ```go
 go mod tidy
 ```
 
-# 3. Ignite the Devnet Broadcaster
+#### 3. Ignite the Devnet Broadcaster
 
 ```go
 go run main.go
