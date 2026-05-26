@@ -39,6 +39,13 @@ QUBEX solves this via a decoupled pre-batcher execution:
 4. Result: Absolute PQC integrity on L2 with zero bytes of PQC overhead added to L1 calldata.
 
 ## Integration & Genesis Pilots
+
 QUBEX Sentinel is currently selecting high-TVL Tier-1 DeFi protocols for exclusive Genesis Pilot integrations prior to full OP Stack Rollup Improvement Proposal (RIP) standardization. 
 
 Legacy architectures are mathematically deprecated. Upgrade to QUBEX to ensure total TVL sovereignty.
+
+### Initiate Integration
+
+To request a technical handoff and secure a Genesis Pilot slot, submit your protocol's architecture for review by our core team:
+
+👉 [Submit Genesis Pilot Request](https://docs.google.com/forms/d/e/1FAIpQLSc6HvUe5tBH6fJ-m0B8j3eBBl4vBaPPHN_XF9h0m9OrxGPRww/viewform)
