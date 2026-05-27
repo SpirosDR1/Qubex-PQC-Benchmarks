@@ -2,6 +2,16 @@
 
 ![Status: Active](https://img.shields.io/badge/Status-Devnet_Active-success) ![Security: ML-DSA](https://img.shields.io/badge/Security-NIST_Level_5-blue) ![Impact: Zero L1 Overhead](https://img.shields.io/badge/L1_Impact-Zero-brightgreen)
 
+### ARCHITECTURE & OPEN-SOURCE DISCLOSURE
+
+What this repository is:
+This repository contains the Cryptographic Benchmark Engine (Proof-of-Concept) used by Qubex Sentinel. It demonstrates the sub-millisecond local execution of ML-DSA signatures and verifies public RPC state configurations. It is designed for developers to independently verify the cryptographic latency claims.
+
+What this repository is NOT:
+This is NOT the complete Qubex Pre-Batcher / Interceptor middleware. The core interceptor logic, mempool state-handling, and sequencer-bypassing architecture are currently Closed-Source / Proprietary Infrastructure. 
+
+We are open-sourcing the cryptographic benchmarks to prove EVM viability. Full architectural integration will be available selectively to L2 Core Teams under NDA/partnership agreements.
+
 ## Overview
 QUBEX Sentinel is an enterprise-grade, decoupled Post-Quantum Cryptography (PQC) middleware designed strictly for EVM-compatible Layer 2 and Layer 3 ecosystems. Utilizing the NIST-standardized ML-DSA (Dilithium) algorithm, QUBEX intercepts and verifies signatures at the sequencer level (pre-batcher).
 
@@ -20,11 +30,11 @@ Load Test Parameters:
 
 | Target Ecosystem | Baseline Latency (Enterprise CPU) | Peak Stress Latency (1.1M Load) | Status |
 | :--- | :--- | :--- | :--- |
-| Base (Sepolia) | ~39k - 65k ns | Sub-Millisecond (<1ms) | SECURED |
-| Optimism | ~39k - 65k ns | Sub-Millisecond (<1ms) | SECURED |
-| Arbitrum | ~39k - 65k ns | Sub-Millisecond (<1ms) | SECURED |
-| zkSync Era | ~39k - 65k ns | Sub-Millisecond (<1ms) | SECURED |
-| Polygon Amoy | ~39k - 65k ns | Sub-Millisecond (<1ms) | SECURED |
+| Base (Sepolia) | ~762k ns (0.76 ms) | SECURED |
+| Optimism | ~1.05 ms | SECURED |
+| Arbitrum | ~602k ns | Sub-Millisecond (<1ms) | SECURED |
+| Polygon Amoy | ~607k ns | Sub-Millisecond (<1ms) | SECURED |
+| zkSync Era | ~608k ns | Sub-Millisecond (<1ms) | SECURED |
 
 *(Full 11-network concurrency logs including Linea, Blast, Mantle, Scroll, Metis, BNB are preserved in system audits).*
 
