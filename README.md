@@ -68,7 +68,7 @@ Run the following commands in your terminal to initialize the omnichain broadcas
 #### Clone the infrastructure repository
 
 ```go
-git clonehttps://github.com/SpirosDR1/Qubex-PQC-Benchmarks.git
+git clone https://github.com/SpirosDR1/Qubex-PQC-Benchmarks.git
 ```
 
 ```go
