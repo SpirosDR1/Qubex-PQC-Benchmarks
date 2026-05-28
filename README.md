@@ -70,19 +70,34 @@ QUBEX solves this via a decoupled pre-batcher execution:
 ### Execution Protocol
 Run the following commands in your terminal to initialize the omnichain broadcaster:
 
-1. Clone the infrastructure repository
-`bash
-git clone [https://github.com/SpirosDR1/Qubex-PQC-Benchmarks.git](https://github.com/SpirosDR1/Qubex-PQC-Benchmarks.git)
+#### Clone the infrastructure repository
+
+```go
+git clone https://github.com/SpirosDR1/Qubex-PQC-Benchmarks.git
+```
+
+```go
 cd Qubex-PQC-Benchmarks
+```
 
-2. Synchronize cryptographic dependencies (Cloudflare CIRCL ML-DSA)
+#### Synchronize cryptographic dependencies (Cloudflare CIRCL ML-DSA)
 
+```go
 go mod tidy
+```
 
+#### Ignite the Devnet Broadcaster
+
+```go
 go run main.go
+```
 
-Integration & Genesis Pilots
+### Integration & Genesis Pilots
+
 QUBEX Sentinel is currently selecting high-TVL Tier-1 DeFi protocols and Rollup-as-a-Service (RaaS) providers for exclusive Genesis Pilot integrations prior to full EVM-wide protocol standardization.
+
 Legacy ECDSA architectures across all L2/L3 networks are mathematically exposed. The choice is binary: native-proof your infrastructure with QUBEX to ensure total TVL sovereignty, or leave your ecosystem vulnerable to total extraction.
+
 Initiate Integration To request a technical handoff and secure a Genesis Pilot slot, submit your protocol's architecture for review by our core team:
+
 Submit Genesis Pilot Request
