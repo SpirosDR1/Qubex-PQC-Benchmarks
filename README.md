@@ -72,7 +72,7 @@ git clone https://github.com/SpirosDR1/Qubex-PQC-Benchmarks.git
 ```
 
 ```go
-cd Qubex-PQC-Benchmarks/benchmarks
+cd Qubex-PQC-Benchmarks
 ```
 
 #### Synchronize cryptographic dependencies (Cloudflare CIRCL ML-DSA)
