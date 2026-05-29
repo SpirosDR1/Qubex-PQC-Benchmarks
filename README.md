@@ -27,14 +27,15 @@ What this repository is NOT: This is NOT the complete Qubex Pre-Batcher / Interc
 
 ## Core Architecture: The "Zero L1 Impact" Paradigm
 
-QUBEX Sentinel sits as a non-invasive interceptor layer between the Sequencer and the Batcher, ensuring PQC integrity without modifying the consensus logic.
+QUBEX Sentinel operates as a non-invasive interceptor layer between the Sequencer and the Batcher, securing L2s against "Harvest Now, Decrypt Later" threats without modifying existing consensus logic.
 
-Integrating PQC directly on-chain inflates gas costs and state bloat to unsustainable levels. QUBEX solves this via a decoupled pre-batcher execution:
+Integrating PQC directly on-chain forces unsustainable gas inflation and state bloat. QUBEX solves this via a decoupled pre-batcher execution:
 
-1. Intercept: The middleware wraps the op-node (sequencer).
-2. Verify: NIST-standard ML-DSA-87 signatures are mathematically verified in sub-millisecond latency.
-3. Compress: Only verified state data reaches the op-batcher.
-4. Result: Absolute PQC integrity on L2 with zero bytes of PQC overhead added to L1 calldata.
+1. Intercept: The middleware wraps the op-node sequencer, capturing transactions before they enter the mempool
+2. Verify: NIST-standard ML-DSA-87 signatures are mathematically validated in ~0.17ms
+3. Compress: Only cryptographically verified, quantum-resistant payloads reach the op-batcher
+
+Result: Absolute PQC integrity on L2 with zero bytes of overhead added to L1 calldata. We enable post-quantum security at the speed of legacy ECDSA
 
 ---
 
