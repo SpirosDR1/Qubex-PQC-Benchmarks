@@ -31,9 +31,11 @@ QUBEX Sentinel operates as a non-invasive interceptor layer between the Sequence
 
 Integrating PQC directly on-chain forces unsustainable gas inflation and state bloat. QUBEX solves this via a decoupled pre-batcher execution:
 
-1. Intercept: The middleware wraps the op-node sequencer, capturing transactions before they enter the mempool
-2. Verify: NIST-standard ML-DSA-87 signatures are mathematically validated in ~0.17ms
-3. Compress: Only cryptographically verified, quantum-resistant payloads reach the op-batcher
+1. AI Threat Detection (Chaos Engine): The middleware intercepts transactions, passing them through our predictive AI engine to detect anomalous "Harvest Now, Decrypt Later" sequencing patterns in real-time.
+
+2. Decentralized Verification (Sentinel Nodes): Clean traffic is routed to our decentralized node network, where NIST-standard ML-DSA signatures are mathematically validated in ~0.17ms.
+
+3. Compress: Only cryptographically verified, quantum-resistant payloads reach the op-batcher.
 
 Result: Absolute PQC integrity on L2 with zero bytes of overhead added to L1 calldata. We enable post-quantum security at the speed of legacy ECDSA
 
