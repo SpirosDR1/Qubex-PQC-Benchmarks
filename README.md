@@ -50,6 +50,18 @@ Load Test Parameters:
 * Concurrency: 11 Tier-1 EVM Ecosystems Simultaneously
 * Total Execution Time: ~3m 10s
 
+### Live Devnet Execution Demo (Visual Confirmation)
+
+*Note: Iterations capped at 10,000 per chain for video brevity. Watch the QUBEX engine hook into 11 EVMs simultaneously.*
+
+https://github.com/user-attachments/assets/0eef7e9d-b287-44de-84d1-f61dbe35888b
+
+### Max-Load Stress Test Benchmarks (2.2M ops total)
+
+*The raw terminal output of the full protocol stress test.*
+
+<img width="936" height="531" alt="QUBEX_2 2M_Omnichain_Execution_Log" src="https://github.com/user-attachments/assets/b1d6aa79-cec4-4e40-b8ec-8cad8918d6fc" />
+
 | Target Ecosystem | Signing Latency | Verification Latency | Status |
 | :--- | :--- | :--- | :--- |
 | Arbitrum | 476,748 ns (~0.47 ms) | 179,985 ns (~0.17 ms) | SECURED |
