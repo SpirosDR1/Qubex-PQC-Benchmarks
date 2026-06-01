@@ -40,19 +40,34 @@ Result: Absolute PQC integrity on L2 with zero bytes of overhead added to L1 cal
 - Hardware: Multi-core CPU. *(Warning: The benchmark is designed to force 100% CPU thread exhaustion to simulate peak enterprise sequencer loads. Proceed with caution on commercial laptops)*.
 
 ### Execution Protocol
-`bash
-git clone [https://github.com/SpirosDR1/Qubex-PQC-Benchmarks.git](https://github.com/SpirosDR1/Qubex-PQC-Benchmarks.git)
+
+```go
+git clone https://github.com/SpirosDR1/Qubex-PQC-Benchmarks.git
+```
+
+```go
 cd Qubex-PQC-Benchmarks/omnichain-router
+```
+
+```go
 go mod tidy
+```
 
-# Inject your burner wallet's private key (NO 0x prefix)
-# Linux/Mac:
+### Inject your burner wallet's private key (NO 0x prefix)
+
+#### Linux/Mac:
+
 export PRIVATE_KEY="YOUR_BURNER_PRIVATE_KEY"
-# Windows (PowerShell):
-# $env:PRIVATE_KEY="YOUR_BURNER_PRIVATE_KEY"
 
-# Ignite the Devnet Broadcaster
+#### Windows (PowerShell):
+
+$env:PRIVATE_KEY="YOUR_BURNER_PRIVATE_KEY"
+
+#### Ignite the Devnet Broadcaster
+
+```go
 go run tx.go
+```
 
 ## Integration & Genesis Pilots
 
