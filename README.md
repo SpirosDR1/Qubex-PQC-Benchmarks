@@ -71,7 +71,7 @@ go run tx.go
 
 ## Integration & Genesis Pilots
 
-QUBEX Sentinel is currently in the MVP Phase, actively selecting high-TVL Cross-Chain Bridges, Oracles, and Tier-1 L2 Rollups for exclusive Genesis Pilot integrations
+QUBEX Sentinel is currently in the MVP Phase, actively selecting high-TVL Cross-Chain Bridges, Oracles, and Tier-1 L2 Rollups for exclusive Genesis Pilot integrations.
 
 Networks participating in the Genesis Pilot phase are eligible for Strategic Integration Bounties (subsidized from our Ecosystem Grants allocation) to eliminate the financial friction of transitioning to a quantum-safe architecture.
 
