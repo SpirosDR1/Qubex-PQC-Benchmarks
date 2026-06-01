@@ -24,10 +24,10 @@ Network upgrades historically introduce systemic risks. The Genesis Framework el
 *   Action: QUBEX operates as an active pre-execution DePIN shield. High-value infrastructure transactions (bridges, cross-chain messaging) are routed through the PQC node network for cryptographic verification before hitting the sequencer.
 *   Outcome: Immediate quantum-resistance for the network's most critical value layers (TVL protection) with zero L1 gas bloat.
 
-### Phase 3: Total Ecosystem Quantum Resistance (Protocol Consensus)
-*   Objective: Complete network upgrade.
-*   Action: Following a successful DAO governance vote, the QUBEX verification logic is natively embedded into the protocol's core execution client (e.g., op-node, nitro).
-*   Outcome: The network achieves full NIST Level 5 compliance, permanently future-proofing the ecosystem against "Harvest Now, Decrypt Later" (HNDL) attacks.
+### Phase 3: Enshrined DePIN Routing (Protocol Consensus)
+*   Objective: Universal Middleware Standardization
+*   Action: Following a successful DAO governance vote, L2 ecosystems enshrine the QUBEX Interceptor directly into their sequencer pipeline. Instead of modifying core consensus logic, the protocol mandates that high-value transactions are routed through the decentralized QUBEX Sentinel Node Network for ML-DSA verification prior to batching.
+*   Outcome: The network achieves full NIST Level 5 compliance without bloating native clients, permanently cementing QUBEX as the primary security bandwidth layer for the ecosystem.
 
 ## Call to Action for Ecosystem Delegates
 Technical readiness is complete. Ecosystem survival now requires protocol consensus. We invite Core Devs, Delegates, and RaaS Providers to fork this blueprint, review the benchmarks in this repository, and open Governance Proposals (RFCs) to initiate Phase 1 in their respective testnets.
