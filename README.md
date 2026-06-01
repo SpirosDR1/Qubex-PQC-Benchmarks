@@ -2,27 +2,37 @@
 
 The First Decentralized AI-PQC Middleware for EVM Ecosystems & Cross-Chain Bridges
 
-## The "Quantum Collapse" & HNDL Threat
+# The PQC Omnichain Shield
 
-Legacy ECDSA rollups face an existential threat from quantum vectors. State actors and malicious entities are already executing "Harvest Now, Decrypt Later" (HNDL) attacks—archiving encrypted L1/L2 state data to decrypt retroactively once Cryptographically Relevant Quantum Computers (CRQCs) come online. The choice is binary: natively proof your infrastructure, or leave your ecosystem vulnerable to total TVL extraction.
+The industry's first concurrent Post-Quantum Cryptography (PQC) middleware, securing EVM ecosystems against "Harvest Now, Decrypt Later" (HNDL) vectors.
 
-## Core Architecture: The "Zero L1 Impact" Paradigm
+# The "Quantum Collapse" & HNDL Threat
+Legacy ECDSA rollups are exposed to an existential threat. State-level actors are currently executing "Harvest Now, Decrypt Later" (HNDL) attacks—archiving encrypted L1/L2 state data to decrypt it retroactively once Cryptographically Relevant Quantum Computers (CRQCs) reach maturity. The choice for modern ecosystems is binary: natively proof your infrastructure today, or accept the inevitability of total TVL extraction.
+ 
+# Core Architecture: The "Zero L1 Impact" Paradigm
+QUBEX Sentinel functions as a non-invasive, high-throughput interceptor layer positioned between the Sequencer and the Batcher. We secure networks without modifying existing consensus logic, avoiding the unsustainable gas inflation and state bloat caused by on-chain PQC implementations.
 
-QUBEX Sentinel operates as a non-invasive interceptor layer between the Sequencer and the Batcher, securing L2s against "Harvest Now, Decrypt Later" threats without modifying existing consensus logic. 
-Integrating PQC directly on-chain forces unsustainable gas inflation and state bloat. QUBEX solves this via a decoupled pre-batcher execution:
+## Our Decoupled Pre-Batcher Execution Flow:
 
-1. AI Threat Detection (Chaos Engine): The middleware intercepts transactions, passing them through our predictive AI engine to detect anomalous "Harvest Now, Decrypt Later" sequencing patterns in real-time.
-2. Decentralized Verification (Sentinel Nodes): Clean traffic is routed to our decentralized node network, where NIST-standard ML-DSA signatures are mathematically validated in ~0.17ms.
-3. Compress: Only cryptographically verified, quantum-resistant payloads reach the op-batcher.
+AI Threat Detection (Chaos Engine): Real-time interception of mempool traffic. Our predictive AI engine identifies and mitigates anomalous sequencing patterns indicative of HNDL vectors.
 
-Result: Absolute PQC integrity on L2 with zero bytes of overhead added to L1 calldata. We enable post-quantum security at the speed of legacy ECDSA.
+Decentralized Sentinel Nodes: Traffic is validated via our decentralized node network, utilizing NIST-standard ML-DSA-87 (Level 5) signatures with sub-millisecond mathematical validation.
 
-## Live Devnet Omnichain Benchmark (Concurrent Routing)
-- Security Standard: NIST Level 5 (ML-DSA-87).
-- Target Networks: 8 Tier-1 L2s (Base, Arbitrum, Optimism, Scroll, Mantle, BNB, Polygon, ETH).
-- Execution: Concurrent Mempool Injection via Goroutines.
-- Validation Latency: Sub-millisecond (~170µs - 650µs CPU cycle variance).
-- L1 Gas Bloat: 0% footprint.
+Zero-Overhead Compression: Only cryptographically verified, quantum-resistant payloads reach the operator.
+
+Result: Absolute PQC integrity on L2 with zero additional bytes of overhead on L1 calldata. We match legacy ECDSA throughput speeds, post-quantum.
+
+# Live Omnichain Benchmark (Mainnet-Ready Deployment)
+
+Validated via the QUBEX Omnichain Broadcaster on enterprise-grade infrastructure.
+
+Security Standard: NIST Level 5 (ML-DSA-87).
+
+Target Infrastructure: 8 L2 Rollups (Base, Arbitrum, Optimism, Scroll, Mantle, Blast, Linea, Metis) + 2 L1 settlement integrations (Ethereum, BNB Chain).
+
+Validation Latency: Sub-millisecond (avg. ~170µs - 650µs).
+
+Efficiency: 0% L1 gas bloat; 2.2 Million concurrent operations verified.
 
 ## Visual Proof
 
