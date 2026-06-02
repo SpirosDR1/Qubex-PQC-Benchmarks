@@ -28,7 +28,7 @@ Validated via the QUBEX Omnichain Broadcaster on enterprise-grade infrastructure
 
 Security Standard: NIST Level 5 (ML-DSA-87).
 
-Target Infrastructure: 8 L2 Rollups (Base, Arbitrum, Optimism, Scroll, Mantle, Blast, Linea, Metis) + 2 L1 settlement integrations (Ethereum, BNB Chain).
+Target Infrastructure: 8 EVM Ecosystems -> 6 Tier-1 L2 Rollups (Arbitrum, Optimism, Base, Scroll, Mantle, Polygon) + 2 L1 Settlement Layers (Ethereum, BNB Chain)
 
 Validation Latency: Sub-millisecond (avg. ~170µs - 650µs).
 
