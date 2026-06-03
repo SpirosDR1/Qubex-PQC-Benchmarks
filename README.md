@@ -1,38 +1,40 @@
 # QUBEX SENTINEL: AI-Driven Post-Quantum DePIN Shield
 
-The First Decentralized AI-PQC Middleware for EVM Ecosystems & Cross-Chain Bridges
+The First Decentralized AI-PQC Middleware for L1 Settlement Layers, EVM Ecosystems & Cross-Chain Bridges.
 
 ## The PQC Omnichain Shield
 
-The industry's first concurrent Post-Quantum Cryptography (PQC) middleware, securing EVM ecosystems against "Harvest Now, Decrypt Later" (HNDL) vectors.
+The industry's first concurrent Post-Quantum Cryptography (PQC) middleware, securing the entire Web3 execution stack against "Harvest Now, Decrypt Later" (HNDL) vectors.
 
 ## The "Quantum Collapse" & HNDL Threat
-Legacy ECDSA rollups are exposed to an existential threat. State-level actors are currently executing "Harvest Now, Decrypt Later" (HNDL) attacks—archiving encrypted L1/L2 state data to decrypt it retroactively once Cryptographically Relevant Quantum Computers (CRQCs) reach maturity. The choice for modern ecosystems is binary: natively proof your infrastructure today, or accept the inevitability of total TVL extraction.
- 
+
+Legacy ECDSA rollups and L1s are exposed to an existential threat. State-level actors are currently executing "Harvest Now, Decrypt Later" (HNDL) attacks—archiving encrypted L1/L2 state data to decrypt it retroactively once Cryptographically Relevant Quantum Computers (CRQCs) reach maturity. The choice for modern ecosystems is binary: natively proof your infrastructure today, or accept the inevitability of total TVL extraction.
+
 ## Core Architecture: The "Zero L1 Impact" Paradigm
-QUBEX Sentinel functions as a non-invasive, high-throughput interceptor layer positioned between the Sequencer and the Batcher. We secure networks without modifying existing consensus logic, avoiding the unsustainable gas inflation and state bloat caused by on-chain PQC implementations.
 
-### Our Decoupled Pre-Batcher Execution Flow:
+QUBEX Sentinel functions as a non-invasive, high-throughput interceptor layer. We secure networks without modifying existing consensus logic, avoiding the unsustainable gas inflation and state bloat caused by on-chain PQC implementations.
 
-AI Threat Detection (Chaos Engine): Real-time interception of mempool traffic. Our predictive AI engine identifies and mitigates anomalous sequencing patterns indicative of HNDL vectors.
+Our Decoupled Pre-Batcher Execution Flow:
 
-Decentralized Sentinel Nodes: Traffic is validated via our decentralized node network, utilizing NIST-standard ML-DSA-87 (Level 5) signatures with sub-millisecond mathematical validation.
+* AI Threat Detection (Chaos Engine): Real-time interception of mempool traffic. Our predictive AI engine identifies and mitigates anomalous sequencing patterns indicative of HNDL vectors.
 
-Zero-Overhead Compression: Only cryptographically verified, quantum-resistant payloads reach the operator.
+* Decentralized Sentinel Nodes: Traffic is validated via our decentralized node network, utilizing NIST-standard ML-DSA-87 (Level 5) signatures with sub-millisecond mathematical validation.
 
-Result: Absolute PQC integrity on L2 with zero additional bytes of overhead on L1 calldata. We match legacy ECDSA throughput speeds, post-quantum.
+* Zero-Overhead Compression: Only cryptographically verified, quantum-resistant payloads reach the operator.
+
+Result: Absolute PQC integrity across L1s, L2s, and Bridges with exactly zero additional bytes of overhead on L1 calldata. We match legacy ECDSA throughput speeds, post-quantum.
 
 ## Live Omnichain Benchmark (Mainnet-Ready Deployment)
 
 Validated via the QUBEX Omnichain Broadcaster on enterprise-grade infrastructure.
 
-Security Standard: NIST Level 5 (ML-DSA-87).
+* Security Standard: NIST Level 5 (ML-DSA-87).
 
-Target Infrastructure: 8 EVM Ecosystems -> 6 Tier-1 L2 Rollups (Arbitrum, Optimism, Base, Scroll, Mantle, Polygon) + 2 L1 Settlement Layers (Ethereum, BNB Chain)
+* Target Infrastructure: 8 EVM Ecosystems -> 6 Tier-1 L2 Rollups (Arbitrum, Optimism, Base, Scroll, Mantle, Polygon) + 2 L1 Settlement Layers (Ethereum, BNB Chain).
 
-Validation Latency: Sub-millisecond (avg. ~170µs - 650µs).
+* Validation Latency: Hardware-level execution (175µs - 590µs).
 
-Efficiency: 0% L1 gas bloat; 2.2 Million concurrent operations verified.
+* Efficiency: 0% L1 gas bloat; 2.2 Million concurrent operations verified.
 
 ### Visual Proof
 
@@ -81,16 +83,16 @@ go run tx.go
 
 ## Integration & Genesis Pilots
 
-QUBEX Sentinel is currently in the MVP Phase, actively selecting high-TVL Cross-Chain Bridges, Oracles, and Tier-1 L2 Rollups for exclusive Genesis Pilot integrations.
+QUBEX Sentinel is actively selecting high-TVL Tier-1 L1 Settlement Layers, L2 Rollups, Cross-Chain Bridges, and Oracles for exclusive Genesis Pilot integrations.
 
-Networks participating in the Genesis Pilot phase are eligible for Strategic Integration Bounties (subsidized from our Ecosystem Grants allocation) to eliminate the financial friction of transitioning to a quantum-safe architecture.
+Eligible Tier-1 networks participating in the Genesis Pilot phase will receive Strategic Integration Grants. This capital allocation is designed to accelerate the rapid deployment of our quantum-safe architecture and secure ecosystems before catastrophic HNDL extraction events occur.
 
 ### Initiate Integration:
 
-To request a technical handoff, review the Trust Index framework, and secure a Genesis Pilot slot, submit your protocol's architecture for review by our core team.
+To request a technical handoff, review the benchmark framework, and secure one of the strictly capped 50 Genesis Pilot slots, submit your protocol's architecture for review by our core team.
 
-Institutional Contact: spyridongagr@qubexsentinel.com
+* Institutional Contact: spyridongagr@qubexsentinel.com
 
-X (Twitter): @QUBEX_SENTINEL
+* X (Twitter): [@QUBEX_SENTINEL](https://twitter.com/QUBEX_SENTINEL)
 
-[Submit Genesis Pilot Request Here](https://forms.gle/hmUdBiQz3PT2x8TT7)
+* Application: [Submit Genesis Pilot Request Here](https://forms.gle/hmUdBiQz3PT2x8TT7)
