@@ -60,17 +60,6 @@ export PRIVATE_KEY="YOUR_BURNER_PK"
 ```go
 go run tx.go
 ```
-### Inject Target State & Run:
-
-(Warning: Use a burner EVM wallet funded with gas for the target mainnets).
-
-```go
-export PRIVATE_KEY="YOUR_BURNER_PK"
-```
-
-```go
-go run tx.go
-```
 
 ## Genesis Integration Pilots
 
