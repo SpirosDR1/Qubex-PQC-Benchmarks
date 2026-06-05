@@ -50,7 +50,8 @@ go run omnichain-pqc-stress-test.go
 ```
 #### Phase 2: Live Mainnet Routing Validation
 
-(Warning: Use a burner EVM wallet funded with gas for the target mainnets).
+*(Warning: Use a burner EVM wallet funded with gas for the target mainnets).*
+
 Validate the sub-second concurrent mempool piercing and 0% L1 gas bloat on live mainnets.
 
 ```go
