@@ -41,6 +41,25 @@ cd Qubex-PQC-Benchmarks/omnichain-router
 go mod init qubex-pqc && go mod tidy
 ```
 
+#### Phase 1: Cryptographic Payload Execution (PQC)
+
+Validate the ML-DSA-87 signature integrity and nanosecond latency logic locally.
+
+```go
+go run omnichain-pqc-stress-test.go
+```
+#### Phase 2: Live Mainnet Routing Validation
+
+(Warning: Use a burner EVM wallet funded with gas for the target mainnets).
+Validate the sub-second concurrent mempool piercing and 0% L1 gas bloat on live mainnets.
+
+```go
+export PRIVATE_KEY="YOUR_BURNER_PK"
+```
+
+```go
+go run tx.go
+```
 ### Inject Target State & Run:
 
 (Warning: Use a burner EVM wallet funded with gas for the target mainnets).
