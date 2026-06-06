@@ -43,13 +43,32 @@ func main() {
   wg.Add(1)
   go func(target TargetChain) {
    defer wg.Done()
-   client, _ := ethclient.Dial(target.RPCURL)
-   nonce, _ := client.PendingNonceAt(context.Background(), fromAddress)
-   gasPrice, _ := client.SuggestGasPrice(context.Background())
-   
-   bumpedGas := new(big.Int).Mul(gasPrice, big.NewInt(120))
-   bumpedGas.Div(bumpedGas, big.NewInt(100))
+  client, err := ethclient.Dial(target.RPCURL)
+  if err != nil {
+   mu.Lock()
+   fmt.Printf("%-10s | FAILED (RPC DEAD)\n", target.Name)
+   mu.Unlock()
+   return
+  }
 
+  nonce, err := client.PendingNonceAt(context.Background(), fromAddress)
+  if err != nil {
+   mu.Lock()
+   fmt.Printf("%-10s | FAILED (RPC THROTTLED)\n", target.Name)
+   mu.Unlock()
+   return
+  }
+
+  gasPrice, err := client.SuggestGasPrice(context.Background())
+  if err != nil || gasPrice == nil {
+   mu.Lock()
+   fmt.Printf("%-10s | FAILED (GAS ERROR)\n", target.Name)
+   mu.Unlock()
+   return
+  }
+
+  bumpedGas := new(big.Int).Mul(gasPrice, big.NewInt(120))
+  bumpedGas.Div(bumpedGas, big.NewInt(100))
    tx := types.NewTx(&types.LegacyTx{
     Nonce:    nonce,
     GasPrice: bumpedGas,
