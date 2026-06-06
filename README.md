@@ -37,6 +37,8 @@ cd Qubex-PQC-Benchmarks/omnichain-router
 
 #### Phase 1: Cryptographic Payload Execution (PQC)
 
+<img width="936" height="531" alt="image" src="https://github.com/user-attachments/assets/aacd19c2-87e6-4332-9528-ecb2e551d5ba" />
+
 Validate the ML-DSA-87 signature integrity and nanosecond latency logic locally.
 
 ```go
