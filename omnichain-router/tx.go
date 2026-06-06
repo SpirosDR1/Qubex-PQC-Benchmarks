@@ -30,7 +30,7 @@ func main() {
  fromAddress := crypto.PubkeyToAddress(privateKey.PublicKey)
 
  networks := []TargetChain{
-  {"Base", "https://base-mainnet.g.alchemy.com/v2/YOUR_API_KEY", 8453},
+  {"Base", "https://mainnet.base.org", 8453}, // Note: QUBEX Production Chaos Engine utilizes Alchemy Enterprise RPCs for mempool interception. Benchmark defaults to standard RPC.
   {"Ethereum", "https://ethereum.publicnode.com", 1},
   {"BSC", "https://bsc-dataseed.binance.org/", 56},
   {"Arbitrum", "https://arb1.arbitrum.io/rpc", 42161},
