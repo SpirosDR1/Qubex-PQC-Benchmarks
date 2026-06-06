@@ -18,7 +18,7 @@ Current L1s and L2s face an existential threat from Harvest Now, Decrypt Later (
 
 We have successfully deployed and stress-tested the routing layer across 6 Tier-1 EVM Mainnets on enterprise-grade bare-metal Hetzner clusters. 
 
-
+<img width="1146" height="213" alt="image" src="https://github.com/user-attachments/assets/9aaf4bc3-99f5-4a89-a08b-806fce02b4ef" />
 
 > *Execution Mode: Concurrent Goroutines, dynamic gas logic with a 20% inclusion bump. Absolute redundancy verified.*
 
