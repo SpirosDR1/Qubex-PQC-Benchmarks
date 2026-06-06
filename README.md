@@ -37,10 +37,6 @@ git clone https://github.com/SpirosDR1/Qubex-PQC-Benchmarks.git
 cd Qubex-PQC-Benchmarks/omnichain-router
 ```
 
-```go
-go mod init qubex-pqc && go mod tidy
-```
-
 #### Phase 1: Cryptographic Payload Execution (PQC)
 
 Validate the ML-DSA-87 signature integrity and nanosecond latency logic locally.
