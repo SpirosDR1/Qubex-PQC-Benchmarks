@@ -78,7 +78,7 @@ func main() {
    })
    
    signedTx, _ := types.SignTx(tx, types.LatestSignerForChainID(big.NewInt(target.ChainID)), privateKey)
-   err := client.SendTransaction(context.Background(), signedTx)
+   err = client.SendTransaction(context.Background(), signedTx)
    
    mu.Lock()
    if err == nil {
