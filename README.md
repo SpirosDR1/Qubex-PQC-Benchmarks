@@ -52,7 +52,7 @@ go run omnichain-pqc-stress-test.go
 
 *(Warning: Use a burner EVM wallet funded with gas for the target mainnets: Optimism($ETH),Polygon($POL),BSC($BNB),Ethereum($ETH),Base($ETH),Arbitrum($ETH)).*
 
-[INFRASTRUCTURE NOTE]: This benchmark fires concurrent goroutines against free, public EVM endpoints. Public RPCs impose strict rate-limits and may occasionally drop connections, resulting in a FAILED (RPC THROTTLED) or (GAS ERROR) log. This exposes the fragility of legacy public infrastructure, not the QUBEX routing logic. Our production Chaos Engine completely bypasses this by utilizing dedicated, enterprise-grade node RPCs.
+*[INFRASTRUCTURE NOTE]: This benchmark fires concurrent goroutines against free, public EVM endpoints. Public RPCs impose strict rate-limits and may occasionally drop connections, resulting in a FAILED (RPC THROTTLED) or (GAS ERROR) log. This exposes the fragility of legacy public infrastructure, not the QUBEX routing logic. Our production Chaos Engine completely bypasses this by utilizing dedicated, enterprise-grade node RPCs.*
 
 Validate the sub-second concurrent mempool piercing and 0% L1 gas bloat on live mainnets.
 
