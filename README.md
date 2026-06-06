@@ -54,8 +54,16 @@ go run omnichain-pqc-stress-test.go
 
 Validate the sub-second concurrent mempool piercing and 0% L1 gas bloat on live mainnets.
 
+*For Mac/Linux:*
+
 ```go
 export PRIVATE_KEY="YOUR_BURNER_PK"
+```
+
+*For Windows (CMD):*
+
+```go
+set PRIVATE_KEY=YOUR_BURNER_PK
 ```
 
 ```go
