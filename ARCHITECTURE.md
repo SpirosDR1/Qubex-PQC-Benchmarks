@@ -19,8 +19,8 @@ We do not replace underlying ECDSA consensus. We wrap it in a quantum-resistant 
 
 ---
 
-## 3. Omnichain Devnet Benchmarks
-Metrics extracted directly from the Qubex-PQC-Benchmarks live testing environment. Testing conducted via concurrent deployment across 6 primary EVM networks.
+## 3. Live Mainnet Benchmarks
+Metrics extracted directly from the Qubex-PQC-Benchmarks live mainnet execution environment. Testing conducted via concurrent deployment across 6 primary EVM networks.
 
 *   Cryptographic Standard: ML-DSA-87 (NIST Post-Quantum standard)
 *   Optimal Routing Floor: 27.37ms (Polygon)
