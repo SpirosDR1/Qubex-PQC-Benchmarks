@@ -42,7 +42,7 @@ def monitor_arbitrum_exposure():
                     
                 last_block = current_block
                 
-            time.sleep(0.1) # Aggressive polling
+            time.sleep(0.1)
             
         except Exception as e:
             print(f"RPC Connection Error: {e}")
