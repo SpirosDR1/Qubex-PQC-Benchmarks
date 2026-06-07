@@ -2,17 +2,15 @@ import time
 from web3 import Web3
 from colorama import init, Fore, Style
 
-# Initialize colorama for blood-red terminal alerts
 init(autoreset=True)
 
-# Arbitrum Mainnet Public RPC
+
 ARBITRUM_RPC = "https://arb1.arbitrum.io/rpc"
 w3 = Web3(Web3.HTTPProvider(ARBITRUM_RPC))
 
-# The Kill Zone Constants (in milliseconds)
-# Assuming a simulated quantum HNDL attack takes ~800ms to derive the ECDSA key
+
 QUANTUM_ATTACK_WINDOW_MS = 800 
-# QUBEX ML-DSA Off-chain verification (from your Hetzner logs)
+
 
 def monitor_arbitrum_exposure():
     print(f"{Fore.CYAN}INITIALIZING QUBEX CHAOS ENGINE...{Style.RESET_ALL}")
@@ -25,11 +23,11 @@ def monitor_arbitrum_exposure():
             current_block = w3.eth.get_block('latest')
             
             if current_block.number > last_block.number:
-                # Calculate Sequencer Latency (Block time difference)
+              
                 time_diff_sec = current_block.timestamp - last_block.timestamp
                 sequencer_latency_ms = time_diff_sec * 1000
                 
-                # The Kill Zone Math
+              
                 exposure_window = sequencer_latency_ms - QUANTUM_ATTACK_WINDOW_MS
                 
                 print(f"Block: {current_block.number} | Sequencer Latency: {sequencer_latency_ms}ms")
