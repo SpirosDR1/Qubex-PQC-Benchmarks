@@ -4,7 +4,7 @@ from colorama import init, Fore, Style
 
 init(autoreset=True)
 
-# OP Stack / RaaS Foundation RPC (Optimism Mainnet)
+
 OP_RPC = "https://mainnet.optimism.io"
 w3 = Web3(Web3.HTTPProvider(OP_RPC))
 
