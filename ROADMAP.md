@@ -9,8 +9,8 @@ status is the point: anything not marked "Built" does not run yet.
   measurement (FIPS 204, level 5). Runs today in this repo.
   
 - Validation API — a stateless /verify endpoint that accepts an
-  ML-DSA-87 public key, message, and signature and returns a verified
-  result. This is the next milestone.
+  ML-DSA-87 public key, message, and signature and returns whether
+  it verifies. Holds no keys, stores nothing. Runs today in this repo.
 
 ## Planned
 
