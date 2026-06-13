@@ -36,7 +36,7 @@ git clone https://github.com/SpirosDR1/Qubex-PQC-Benchmarks.git
 ```
 
 ```go
-cd Qubex-PQC-Benchmarks
+cd Qubex-PQC-Benchmarks/benchmarks_code
 ```
 
 ```go
