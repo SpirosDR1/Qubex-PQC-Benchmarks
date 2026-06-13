@@ -54,6 +54,29 @@ when you share results.
 
 <img width="495" height="206" alt="image" src="https://github.com/user-attachments/assets/b25143ae-46cc-4b9f-afe3-c581f0eac48c" />
 
+## Verification API
+
+Beyond the benchmark, the repo includes a stateless verification
+service. It exposes a /verify endpoint that checks an ML-DSA-87
+signature against a public key and message, and returns whether it is
+valid. It holds no keys and stores nothing.
+
+```go
+cd Qubex-PQC-Benchmarks
+```
+
+```go
+go run./api
+```
+*Then in another terminal:*
+
+```
+curl -s localhost:8080/demo > demo.json
+```
+
+```go
+curl -s -X POST localhost:8080/verify -H "Content-Type: application/json" -d @demo.json
+```
 
 ## Methodology
 
