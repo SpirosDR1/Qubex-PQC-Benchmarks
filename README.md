@@ -51,6 +51,10 @@ Output: average sign latency, average verify latency, and a validity
 check, in nanoseconds. Numbers are hardware-dependent — report your CPU
 when you share results.
 
+
+<img width="495" height="206" alt="image" src="https://github.com/user-attachments/assets/b25143ae-46cc-4b9f-afe3-c581f0eac48c" />
+
+
 ## Methodology
 
 - Scheme: ML-DSA-87 (FIPS 204, level 5)
