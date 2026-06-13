@@ -31,11 +31,11 @@ production service — see ROADMAP for what is built versus designed.
 
 Requires Go 1.21+.
 
-```go
+```bash
 git clone https://github.com/SpirosDR1/Qubex-PQC-Benchmarks.git
 ```
 
-```go
+```bash
 cd Qubex-PQC-Benchmarks/benchmarks_code
 ```
 
@@ -61,20 +61,20 @@ service. It exposes a /verify endpoint that checks an ML-DSA-87
 signature against a public key and message, and returns whether it is
 valid. It holds no keys and stores nothing.
 
-```go
+```bash
 cd Qubex-PQC-Benchmarks
 ```
 
 ```go
-go run./api
+go run ./api
 ```
 *Then in another terminal:*
 
-```
+```bash
 curl -s localhost:8080/demo > demo.json
 ```
 
-```go
+```bash
 curl -s -X POST localhost:8080/verify -H "Content-Type: application/json" -d @demo.json
 ```
 
