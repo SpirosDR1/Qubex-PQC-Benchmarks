@@ -7,9 +7,7 @@ status is the point: anything not marked "Built" does not run yet.
 
 - ML-DSA-87 benchmark — sign/verify latency and correctness
   measurement (FIPS 204, level 5). Runs today in this repo.
-
-## In progress
-
+  
 - Validation API — a stateless /verify endpoint that accepts an
   ML-DSA-87 public key, message, and signature and returns a verified
   result. This is the next milestone.
