@@ -1,55 +1,71 @@
-# QUBEX Genesis Framework: PQC Integration Blueprint for L2 Sequencers & RaaS Operators
+# Qubex Genesis Framework — Integration Path for Custodians & Infrastructure
 
-## Executive Summary
+## Purpose
 
-As NIST finalizes Post-Quantum Cryptography (PQC) standards (ML-DSA), EVM-compatible L2 and L3 rollups face a critical architectural dilemma: integrate quantum-resistant signatures natively and suffer massive sequencer latency degradation, or remain on legacy ECDSA and risk complete cryptographic compromise by quantum vectors.
+This document describes the path by which an institutional custodian or
+infrastructure operator can adopt post-quantum verification through
+Qubex Sentinel. It is a blueprint for where the integration is going. It
+distinguishes, at every step, what exists today from what is being
+built.
 
-The QUBEX Genesis Framework is the official transition blueprint. It provides RaaS Providers, Rollup Operators, and Core Protocol Developers with a zero-friction, modular pathway to upgrade their ecosystem's security to NIST Level 5 standards via our Decentralized Post-Quantum DePIN.
+## Where things stand
 
-The QUBEX routing architecture is not theoretical. Our Omnichain Chaos Engine has successfully demonstrated concurrent mempool piercing across 6 Tier-1 EVM Mainnets, achieving sub-second cross-chain latency without relying on native consensus alterations.
+Built today: the ML-DSA-87 cryptographic core (FIPS 204, level 5),
+benchmarked for performance and correctness in the Qubex-PQC-Benchmarks
+repository.
 
-## The QUBEX Operational Guarantee
+In development: the Validation API and the integration path described
+below. These are design, not live service. We say so plainly because a
+partner deciding whether to build on Qubex needs to know exactly what is
+real.
 
-Network upgrades historically introduce systemic risks and state bloat. The Genesis Framework eliminates this through our decoupled pre-batcher DePIN architecture, guaranteeing:
+## The integration path
 
-* Zero Network Downtime: PQC validation is handled by the distributed Sentinel Node Network as an independent, non-invasive interceptor layer.
+### Phase 1 — Verification pilot
 
-* Zero Sequencer Degradation: Mainnet infrastructure load-testing confirms our routing overhead maintains strict sub-second TPS pacing, ensuring legacy ECDSA execution speeds.
+- **Goal:** confirm, against the partner's real traffic patterns, that
+  post-quantum verification meets their latency and throughput needs.
+- **How:** the partner sends verification requests (public key, message,
+  signature) to the Qubex Validation API in parallel with their existing
+  flow. Nothing in their production path changes; Qubex runs alongside as
+  an observer.
+- **Outcome:** measured latency and throughput data, and an honest
+  assessment of fit — including where it doesn't fit yet.
 
-* Zero User UX Friction: End-users do not need to rotate their existing ECDSA wallets or private keys during the transition phase.
+### Phase 2 — Active verification layer
 
-## The 3-Phase Integration Pipeline
+- **Goal:** post-quantum assurance on the partner's highest-value
+  operations.
+- **How:** critical transactions are verified through Qubex before the
+  partner's system finalizes them. ML-DSA-87 verification becomes a
+  required check on the assets that matter most.
+- **Outcome:** the partner's most sensitive value carries a
+  NIST-standard post-quantum verification step, with no change to the
+  chains they use or the keys their clients hold.
 
-### Phase 1: Mainnet Shadow Routing (Genesis Pilot)
+### Phase 3 — Standard integration
 
-* Objective: Real-world latency profiling and routing validation without affecting native state execution.
+- **Goal:** verification as a permanent, native part of the partner's
+  process.
+- **How:** the Qubex verification step is built directly into the
+  partner's pipeline rather than called as an external service.
+- **Outcome:** post-quantum verification becomes a default property of
+  the partner's infrastructure, not an add-on.
 
-* Action: The ecosystem integrates QUBEX AI Interceptors into their RPCs. We mirror pre-execution transaction data to the live QUBEX Chaos Engine to benchmark concurrent routing throughput under peak network loads.
+## What the partner keeps
 
-* Outcome: The DAO receives a verifiable architectural audit proving that decentralized PQC routing maintains the required TPS at sub-second latency with exactly zero L1 calldata bloat.
+- Their chains. No migration.
+- Their custody model. Qubex holds no keys and no funds.
+- Their clients' wallets. No rotation required.
+- Their execution speed. Verification runs alongside, not inside, the
+  critical path until the partner chooses to enshrine it.
 
-### Phase 2: Active Pre-Batcher Shield (ML-DSA Deployment)
+## Pilot slots
 
-* Objective: Active threat neutralization via decentralized cryptographic validation.
+We are preparing a limited number of Phase 1 verification pilots. If you
+operate institutional custody or rollup infrastructure and want to
+profile post-quantum verification against your own traffic, reach out.
 
-* Action: QUBEX transitions from shadow-routing to an active pre-execution shield. High-value infrastructure transactions (bridges, cross-chain messaging) are routed through the PQC node network. The NIST ML-DSA payload is actively applied and verified before the transaction hits the ecosystem's sequencer.
-
-* Outcome: Immediate quantum-resistance for the network's most critical value layers (TVL protection).
-
-### Phase 3: Enshrined DePIN Consensus (Protocol Level)
-
-* Objective: Universal Middleware Standardization.
-
-* Action: Following a successful Phase-1 pilot, L2 operators enshrine the QUBEX Interceptor directly into their sequencer pipeline.
-
-* Outcome: The network achieves full NIST Level 5 compliance without bloating native clients. QUBEX becomes a non-extractable, enshrined primitive for the ecosystem.
-
-## Call to Action for Ecosystem Delegates
-
-The cryptographic threshold is closing. We invite Core Devs, Protocol Founders, and RaaS Providers to audit our Mainnet benchmarks and secure their Genesis Pilot slot before legacy ECDSA vulnerabilities are exploited by HNDL vectors.
-
-For integration architecture and Node Operator requirements, secure your Genesis Pilot slot below:
-
-* Institutional Contact: spyridongagr@qubexsentinel.com
-* X (Twitter): [@QUBEX_SENTINEL](https://x.com/QUBEX_SENTINEL)
-* Application: [Submit Genesis Pilot Request Here](https://docs.google.com/forms/d/e/1FAIpQLSc6HvUe5tBH6fJ-m0B8j3eBBl4vBaPPHN_XF9h0m9OrxGPRww/viewform)
+- Email: spyridongagr@qubexsentinel.com
+- X: [@QUBEX_SENTINEL](https://x.com/QUBEX_SENTINEL)
+- Apply: [Genesis Pilot Request](https://forms.gle/hmUdBiQz3PT2x8TT7)
