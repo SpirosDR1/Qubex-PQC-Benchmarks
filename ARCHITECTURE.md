@@ -1,38 +1,83 @@
-# QUBEX SENTINEL: AI-Driven Post-Quantum DePIN
-### Omnichain ML-DSA Validation Layer for L1/L2 & Cross-Chain Infrastructure
+# Qubex Sentinel — Architecture
+
+Post-quantum verification for assets on existing chains, with no
+migration. This document describes both what runs today and the
+architecture it is being built toward. Each component is labelled so the
+two are never confused.
+
+## Status legend
+
+- **[BUILT]** — exists and runs in this repository today
+- **[DESIGN]** — intended architecture, not yet implemented
+- **[RESEARCH]** — open question, not yet decided
 
 ---
 
-## 1. The Core Primitive
-Current EVM and cross-chain execution architectures rely on legacy ECDSA/EdDSA signature schemes. These environments are critically exposed to deterministic "Harvest Now, Decrypt Later" (HNDL) attack vectors, particularly at the mempool, sequencing, and cross-chain messaging layers (VAAs, OApps). 
+## The problem
 
-QUBEX Sentinel is the first decentralized, AI-driven Post-Quantum Cryptography (PQC) validation network. It operates as a decoupled pre-batcher and validation middleware, natively executing NIST standard ML-DSA-87 audits before state transition, securing the execution path with strict zero L1 gas bloat.
+Institutional crypto sits on chains secured by ECDSA. A sufficiently
+powerful quantum computer can derive private keys from the public keys
+already visible on-chain. Institutions cannot respond the way retail can:
 
----
+- They can't migrate to a new "quantum-safe" chain — custody
+  relationships, prime-broker agreements, and regulatory frameworks are
+  bound to the chains they're on.
+- They can't wait for base-layer consensus to upgrade — Bitcoin's PQ
+  signature scheme is pre-consensus, and Ethereum's path spans multiple
+  hard forks across years.
 
-## 2. Decoupled Architecture (The Chaos Engine)
-We do not replace underlying ECDSA consensus. We wrap it in a quantum-resistant PQC validation layer. The Chaos Engine acts as the decentralized execution environment:
-
-*   Mempool Interception: The network hooks into RPC/Sequencer data streams, intercepting raw transaction payloads and cross-chain messaging packets.
-*   Concurrent Execution Mode: Running optimized Goroutines, QUBEX nodes validate the post-quantum ML-DSA-87 signatures off-chain, leveraging AI-driven dynamic routing to minimize latency bottlenecks.
-*   Zero-Bloat L1 Delivery: Upon cryptographic consensus, the Chaos Engine pushes the verified state to the respective L1/L2 sequencer. The EVM validates the lightweight proof, incurring 0% additional gas bloat compared to standard transactions.
-
----
-
-## 3. Live Mainnet Benchmarks
-Metrics extracted directly from the Qubex-PQC-Benchmarks live mainnet execution environment. Testing conducted via concurrent deployment across 6 primary EVM networks.
-
-*   Cryptographic Standard: ML-DSA-87 (NIST Post-Quantum standard)
-*   Optimal Routing Floor: 27.37ms (Polygon)
-*   Maximum Sequencer Stress Latency: 569.61ms (Arbitrum)
-*   Total Omnichain Vector Execution: 853.08ms (Concurrent 6-chain validation)
-*   L1 Execution Overhead: ZERO-BLOAT CONFIRMED across all chains (Ethereum, Base, Optimism, Arbitrum, Polygon, BSC).
+What they need is a verification layer that adds post-quantum assurance
+to their existing ECDSA flows, on their existing chains, that they can
+audit and present to a regulator. That is the layer Qubex is building.
 
 ---
 
-## 4. Integration Vectors
-QUBEX Sentinel is built for zero-friction integration at the protocol and application layer, requiring zero smart contract rewrites for existing deployments.
+## 1. Cryptographic core  [BUILT]
 
-*   EigenLayer / Karak AVS: Deployable as an Actively Validated Service to provide crypto-economic security to post-quantum transaction sequencing.
-*   LayerZero V2 DVN: Architected to operate as a custom Decentralized Verifier Network (DVN). OApps can enforce QUBEX Sentinel as a required verifier to natively shield their cross-chain payloads against quantum decryption vectors.
-*   Rollup Infrastructure: Plug-and-play middleware for optimistic and ZK rollup sequencers (Conduit, Caldera, AltLayer) demanding institutional-grade PQC compliance.
+ML-DSA-87 (NIST FIPS 204, level 5) signing and verification, benchmarked
+for latency and correctness. This is the only component that runs today.
+Everything below is built on this primitive.
+
+## 2. Validation API  [DESIGN]
+
+A stateless service that accepts an ML-DSA-87 public key, message, and
+signature, verifies it, and returns a signed attestation of the result.
+
+The design goals:
+
+- Stateless and horizontally scalable — verification is independent per
+  request.
+- No custody of client funds or keys at any point.
+- An interface a custodian can call as an added check over their
+  existing ECDSA signing flow, without changing how they hold assets.
+
+## 3. Institutional integration  [DESIGN]
+
+Custodians call the Validation API as a post-quantum verification step
+alongside their current process. No chain migration, no wallet rotation
+for end clients, no smart-contract rewrites on the chains they use.
+
+The integration is meant to be additive: it sits beside existing
+infrastructure rather than replacing any part of it.
+
+## 4. Open questions  [RESEARCH]
+
+- **Attestation format.** A plain signed verification result, or a
+  zero-knowledge proof that verification was performed correctly without
+  revealing inputs.
+- **Trust model.** How a custodian confirms the API returned an honest
+  result — independent re-verification, on-chain anchoring of
+  attestations, or both.
+- **Anchoring.** Whether verification results need to be committed
+  on-chain at all, and at what cost/benefit.
+
+---
+
+## Design principles
+
+- **No migration.** Security is added where the assets already are.
+- **NIST-standard only.** ML-DSA (FIPS 204), so the cryptography is one a
+  regulated institution can stand behind.
+- **No custody.** Qubex verifies; it never holds keys or funds.
+- **Auditable.** Every claim in this document maps to a status label.
+  What is built can be run. What is designed is marked as designed.
