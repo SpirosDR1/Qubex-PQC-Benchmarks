@@ -71,7 +71,7 @@ being wrong is the whole position.
 | Component                  | State    |
 |----------------------------|----------|
 | ML-DSA-87 benchmark        | Built    |
-| Validation API             | Design   |
+| Validation API             | Built    |
 | Institutional integration  | Design   |
 
 ## Contact
