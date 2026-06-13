@@ -42,9 +42,6 @@ func healthHandler(w http.ResponseWriter, r *http.Request) {
  })
 }
 
-// verifyHandler is the core product: it takes an ML-DSA-87 public key,
-// message, and signature (all hex-encoded) and returns whether the
-// signature is valid. It holds no keys and stores nothing.
 func verifyHandler(w http.ResponseWriter, r *http.Request) {
  if r.Method != http.MethodPost {
   writeJSON(w, http.StatusMethodNotAllowed, verifyResponse{Error: "use POST"})
@@ -88,10 +85,6 @@ func verifyHandler(w http.ResponseWriter, r *http.Request) {
  })
 }
 
-// demoHandler generates a fresh keypair, signs a sample message, and
-// returns public key + message + signature as hex. This is a development
-// convenience so you can feed the output straight into /verify and see a
-// real round-trip. Remove this endpoint before any production use.
 func demoHandler(w http.ResponseWriter, r *http.Request) {
  pk, sk, err := mldsa87.GenerateKey(rand.Reader)
  if err != nil {
