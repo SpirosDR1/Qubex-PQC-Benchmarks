@@ -78,6 +78,7 @@ being wrong is the whole position.
 
 - Email: spyridongagr@qubexsentinel.com
 - X: [@QUBEX_SENTINEL](https://x.com/QUBEX_SENTINEL)
+- Apply: [Genesis Pilot Request](https://forms.gle/hmUdBiQz3PT2x8TT7)
 
 ## License
 
