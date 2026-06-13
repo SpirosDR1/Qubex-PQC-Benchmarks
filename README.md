@@ -1,80 +1,80 @@
-# QUBEX SENTINEL: Omnichain Chaos Engine (Mainnet Infrastructure)
+# Qubex Sentinel — PQC Benchmarks
 
-The first Decentralized AI-PQC Middleware for L1 Settlement Layers and EVM Rollups. 
+Post-quantum signature validation for institutional crypto custody.
+This repository contains the reference benchmark for the cryptographic
+core: NIST ML-DSA-87 signing and verification.
 
-This repository contains the production-ready concurrent routing infrastructure benchmarks for the QUBEX Sentinel network.
+## Why this exists
 
-## The Architecture: Decoupled PQC Delivery
+Institutions hold their assets on chains secured by ECDSA. Those
+signatures are exposed to "Harvest Now, Decrypt Later" — public keys
+visible on-chain today can be attacked the day a cryptographically
+relevant quantum computer exists. Custodians can't migrate to new
+chains: their positions, custody relationships, and compliance
+frameworks are fixed where they are.
 
-Current L1s and L2s face an existential threat from Harvest Now, Decrypt Later (HNDL) vectors. Natively upgrading consensus algorithms to quantum-safe standards is slow and causes catastrophic L1 state bloat. 
+Qubex Sentinel is being built to give them post-quantum verification
+for the assets they already hold, on the chains they already use, with
+no migration. The standard that wins this will be the one institutions
+can put in front of a regulator. That's what we're building toward.
 
-### QUBEX solves this via a decoupled pre-batcher layer:
+## What's in this repo today
 
-1. The Routing Engine (LIVE): Sub-second, concurrent mempool piercing across multiple EVM chains simultaneously. 0% L1 gas bloat.
+A reproducible benchmark of ML-DSA-87 (NIST FIPS 204, security level 5)
+sign and verify performance, using the cloudflare/circl implementation.
 
-2. The Cryptographic Payload (PILOT PHASE): Delivering decentralized NIST-standard ML-DSA validations through our routing infrastructure before the transaction reaches the sequencer.
+This is the cryptographic primitive the rest of the system is built on.
+It is a measurement tool. It does not secure any chain and is not a
+production service — see ROADMAP for what is built versus designed.
 
-## Live Mainnet Benchmarks
+## Run it
 
-We have successfully deployed and stress-tested the routing layer across 6 Tier-1 EVM Mainnets on enterprise-grade bare-metal Hetzner clusters. 
-
-<img width="1146" height="213" alt="image" src="https://github.com/user-attachments/assets/9aaf4bc3-99f5-4a89-a08b-806fce02b4ef" />
-
-> *Execution Mode: Concurrent Goroutines, dynamic gas logic with a 20% inclusion bump. Absolute redundancy verified.*
-
-## Verification: "Don't Trust, Verify"
-Enterprise architects and protocol core developers can independently reproduce our cross-chain routing latency and gas logic locally. 
-
-### Execution Protocol:
+Requires Go 1.21+.
 
 ```go
 git clone https://github.com/SpirosDR1/Qubex-PQC-Benchmarks.git
 ```
 
 ```go
-cd Qubex-PQC-Benchmarks/omnichain-router
-```
-
-#### Phase 1: Cryptographic Payload Execution (PQC)
-
-<img width="936" height="531" alt="image" src="https://github.com/user-attachments/assets/aacd19c2-87e6-4332-9528-ecb2e551d5ba" />
-
-Validate the ML-DSA-87 signature integrity and nanosecond latency logic locally.
-
-```go
-go run omnichain-pqc-stress-test.go
-```
-#### Phase 2: Live Mainnet Routing Validation
-
-*(Warning: Use a burner EVM wallet funded with gas for the target mainnets: Optimism($ETH), Polygon($POL), BSC($BNB), Ethereum($ETH), Base($ETH), Arbitrum($ETH)).*
-
-*[INFRASTRUCTURE NOTE]: This benchmark fires concurrent goroutines against free, public EVM endpoints. Public RPCs impose strict rate-limits and may occasionally drop connections, resulting in a FAILED (RPC THROTTLED) or (GAS ERROR) log. This exposes the fragility of legacy public infrastructure, not the QUBEX routing logic. Our production Chaos Engine completely bypasses this by utilizing dedicated, enterprise-grade node RPCs.*
-
-Validate the sub-second concurrent mempool piercing and 0% L1 gas bloat on live mainnets.
-
-*For Mac/Linux:*
-
-```go
-export PRIVATE_KEY="YOUR_BURNER_PK"
-```
-
-*For Windows (CMD):*
-
-```go
-set PRIVATE_KEY=YOUR_BURNER_PK
+cd Qubex-PQC-Benchmarks
 ```
 
 ```go
-go run tx.go
+go mod tidy
 ```
 
-## Genesis Integration Pilots
+```go
+go run main.go
+```
 
-With the infrastructure routing architecture validated on Mainnet, QUBEX is opening limited slots for our 90-Day Zero-Cost Genesis Pilots.
-We are actively onboarding high-TVL Rollups and RaaS platforms to integrate our full ML-DSA cryptographic payload via this exact routing engine.
+Output: average sign latency, average verify latency, and a validity
+check, in nanoseconds. Numbers are hardware-dependent — report your CPU
+when you share results.
 
-* Institutional Contact: spyridongagr@qubexsentinel.com
+## Methodology
 
-* X (Twitter): [@QUBEX_SENTINEL](https://twitter.com/QUBEX_SENTINEL)
+- Scheme: ML-DSA-87 (FIPS 204, level 5)
+- Library: cloudflare/circl
+- 1,000-iteration warm-up, then 100,000 timed iterations per operation
+- Single-threaded wall-clock timing
 
-* Application: [Submit Genesis Pilot Request Here](https://forms.gle/hmUdBiQz3PT2x8TT7)
+Level 5 is the highest ML-DSA parameter set. Larger signatures, maximum
+security margin — the conservative choice for custody, where the cost of
+being wrong is the whole position.
+
+## Status
+
+| Component                  | State    |
+|----------------------------|----------|
+| ML-DSA-87 benchmark        | Built    |
+| Validation API             | Design   |
+| Institutional integration  | Design   |
+
+## Contact
+
+- Email: spyridongagr@qubexsentinel.com
+- X: [@QUBEX_SENTINEL](https://x.com/QUBEX_SENTINEL)
+
+## License
+
+MIT
