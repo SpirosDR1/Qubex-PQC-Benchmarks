@@ -25,4 +25,4 @@ status is the point: anything not marked "Built" does not run yet.
 - Trust model: how a custodian independently confirms a verification
   result.
 
-_Last updated: 13 June 2026_
+_Last updated: 14 June 2026_
