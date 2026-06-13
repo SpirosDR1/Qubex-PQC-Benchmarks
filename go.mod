@@ -1,6 +1,6 @@
 module github.com/SpirosDR1/Qubex-PQC-Benchmarks
 
-go 1.21
+go 1.24.0
 
 require github.com/cloudflare/circl v1.6.3
 
