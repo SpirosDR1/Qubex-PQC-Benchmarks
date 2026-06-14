@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"time"
+	"os"
 
 	"github.com/cloudflare/circl/sign/mldsa/mldsa87"
 )
@@ -29,7 +30,11 @@ func main() {
 	http.HandleFunc("/verify", verifyHandler)
 	http.HandleFunc("/demo", demoHandler)
 
-	addr := ":8080"
+	port := os.Getenv("PORT")
+if port == "" {
+    port = "8080"
+}
+addr := ":" + port
 	log.Printf("Qubex Sentinel verification API listening on %s", addr)
 	log.Printf("Scheme: ML-DSA-87 (NIST FIPS 204, level 5)")
 	log.Fatal(http.ListenAndServe(addr, nil))
