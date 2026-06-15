@@ -21,11 +21,12 @@ can put in front of a regulator. That's what we're building toward.
 ## What's in this repo today
 
 A reproducible benchmark of ML-DSA-87 (NIST FIPS 204, security level 5)
-sign and verify performance, using the cloudflare/circl implementation.
+sign and verify performance, using the cloudflare/circl implementation,
+plus a stateless verification API with signed attestations (see below).
 
 This is the cryptographic primitive the rest of the system is built on.
-It is a measurement tool. It does not secure any chain and is not a
-production service — see ROADMAP for what is built versus designed.
+The benchmark is a measurement tool. It does not secure any chain and is
+not a production service — see ROADMAP for what is built versus designed.
 
 ## Run it
 
@@ -34,16 +35,13 @@ Requires Go 1.21+.
 ```bash
 git clone https://github.com/SpirosDR1/Qubex-PQC-Benchmarks.git
 ```
-
 ```bash
 cd Qubex-PQC-Benchmarks/benchmarks_code
 ```
-
-```go
+```bash
 go mod tidy
 ```
-
-```go
+```bash
 go run main.go
 ```
 
@@ -51,32 +49,43 @@ Output: average sign latency, average verify latency, and a validity
 check, in nanoseconds. Numbers are hardware-dependent — report your CPU
 when you share results.
 
-
 <img width="495" height="206" alt="image" src="https://github.com/user-attachments/assets/b25143ae-46cc-4b9f-afe3-c581f0eac48c" />
 
 ## Verification API
 
 Beyond the benchmark, the repo includes a stateless verification
 service. It exposes a /verify endpoint that checks an ML-DSA-87
-signature against a public key and message, and returns whether it is
-valid. It holds no keys and stores nothing.
+signature against a public key and message, returns whether it is valid,
+and returns a signed attestation of that result. It holds no user keys
+and stores nothing.
+
+Each verification result is signed with the service's own ML-DSA-87
+attestation key, making the result a portable receipt that anyone can
+verify independently against the published attestation public key
+(/attestation-key). Note: the attestation signs the *result the service
+returned* — it does not yet prove the verification was performed
+correctly. A zero-knowledge proof of correct verification is on the
+roadmap. The attestation key is currently ephemeral and rotates on
+restart; persistence is also on the roadmap.
 
 ```bash
 cd Qubex-PQC-Benchmarks
 ```
-
-```go
+```bash
 go run ./api
 ```
+
 *Then in another terminal:*
 
 ```bash
 curl -s localhost:8080/demo > demo.json
 ```
-
 ```bash
 curl -s -X POST localhost:8080/verify -H "Content-Type: application/json" -d @demo.json
 ```
+
+Endpoints: `/` (info), `/health`, `/verify` (POST), `/attestation-key`,
+`/demo`.
 
 ## Methodology
 
@@ -94,7 +103,10 @@ being wrong is the whole position.
 | Component                  | State    |
 |----------------------------|----------|
 | ML-DSA-87 benchmark        | Built    |
-| Validation API             | Built    |
+| Verification API           | Built    |
+| Signed attestation         | Built    |
+| Persistent attestation key | Design   |
+| ZK proof of verification   | Research |
 | Institutional integration  | Design   |
 
 ## Contact
