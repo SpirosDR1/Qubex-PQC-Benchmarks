@@ -28,6 +28,17 @@ type verifyResponse struct {
 	Error       string `json:"error,omitempty"`
 }
 
+type attestRequest struct {
+	Statement   string `json:"statement"`
+	Attestation string `json:"attestation"`
+}
+
+type attestResponse struct {
+	Genuine bool   `json:"genuine"`
+	Scheme  string `json:"scheme"`
+	Error   string `json:"error,omitempty"`
+}
+
 type rootResponse struct {
 	Service   string   `json:"service"`
 	Scheme    string   `json:"scheme"`
@@ -47,6 +58,7 @@ func main() {
 	http.HandleFunc("/", rootHandler)
 	http.HandleFunc("/health", healthHandler)
 	http.HandleFunc("/verify", verifyHandler)
+	http.HandleFunc("/verify-attestation", verifyAttestationHandler)
 	http.HandleFunc("/attestation-key", attestationKeyHandler)
 	http.HandleFunc("/demo", demoHandler)
 
@@ -69,7 +81,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, http.StatusOK, rootResponse{
 		Service:   "Qubex Sentinel Verification API",
 		Scheme:    "ML-DSA-87 (NIST FIPS 204, level 5)",
-		Endpoints: []string{"/health", "/verify (POST)", "/attestation-key", "/demo"},
+		Endpoints: []string{"/health", "/verify (POST)", "/verify-attestation (POST)", "/attestation-key", "/demo"},
 	})
 }
 
@@ -154,6 +166,37 @@ func verifyHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	writeJSON(w, http.StatusOK, resp)
+}
+
+func verifyAttestationHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		writeJSON(w, http.StatusMethodNotAllowed, attestResponse{Error: "use POST"})
+		return
+	}
+
+	var req attestRequest
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		writeJSON(w, http.StatusBadRequest, attestResponse{Error: "invalid JSON body"})
+		return
+	}
+
+	if req.Statement == "" || req.Attestation == "" {
+		writeJSON(w, http.StatusBadRequest, attestResponse{Error: "statement and attestation are required"})
+		return
+	}
+
+	attBytes, err := hex.DecodeString(req.Attestation)
+	if err != nil {
+		writeJSON(w, http.StatusBadRequest, attestResponse{Error: "attestation is not valid hex"})
+		return
+	}
+
+	genuine := mldsa87.Verify(attestPK, []byte(req.Statement), nil, attBytes)
+
+	writeJSON(w, http.StatusOK, attestResponse{
+		Genuine: genuine,
+		Scheme:  "ML-DSA-87",
+	})
 }
 
 func demoHandler(w http.ResponseWriter, r *http.Request) {
