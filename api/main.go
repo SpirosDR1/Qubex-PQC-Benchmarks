@@ -3,6 +3,7 @@ package main
 import (
 	"crypto/rand"
 	"crypto/sha256"
+	"encoding/base64"
 	"encoding/hex"
 	"encoding/json"
 	"log"
@@ -47,13 +48,46 @@ type rootResponse struct {
 
 var attestPK *mldsa87.PublicKey
 var attestSK *mldsa87.PrivateKey
+var attestationPersistent bool
 
-func main() {
+func loadOrGenerateAttestationKey() (*mldsa87.PublicKey, *mldsa87.PrivateKey, bool, error) {
+	pkB64 := os.Getenv("ATTEST_PK_B64")
+	skB64 := os.Getenv("ATTEST_SK_B64")
+
+	if pkB64 != "" && skB64 != "" {
+		pkBytes, err := base64.StdEncoding.DecodeString(pkB64)
+		if err != nil {
+			return nil, nil, false, err
+		}
+		skBytes, err := base64.StdEncoding.DecodeString(skB64)
+		if err != nil {
+			return nil, nil, false, err
+		}
+
+		var pk mldsa87.PublicKey
+		var sk mldsa87.PrivateKey
+		if err := pk.UnmarshalBinary(pkBytes); err != nil {
+			return nil, nil, false, err
+		}
+		if err := sk.UnmarshalBinary(skBytes); err != nil {
+			return nil, nil, false, err
+		}
+		return &pk, &sk, true, nil
+	}
+
 	pk, sk, err := mldsa87.GenerateKey(rand.Reader)
 	if err != nil {
-		log.Fatal("attestation key generation failed: ", err)
+		return nil, nil, false, err
 	}
-	attestPK, attestSK = pk, sk
+	return pk, sk, false, nil
+}
+
+func main() {
+	pk, sk, persistent, err := loadOrGenerateAttestationKey()
+	if err != nil {
+		log.Fatal("attestation key setup failed: ", err)
+	}
+	attestPK, attestSK, attestationPersistent = pk, sk, persistent
 
 	http.HandleFunc("/", rootHandler)
 	http.HandleFunc("/health", healthHandler)
@@ -70,6 +104,11 @@ func main() {
 
 	log.Printf("Qubex Sentinel verification API listening on %s", addr)
 	log.Printf("Scheme: ML-DSA-87 (NIST FIPS 204, level 5)")
+	if persistent {
+		log.Printf("Attestation key: persistent (loaded from environment)")
+	} else {
+		log.Printf("Attestation key: ephemeral (generated at startup)")
+	}
 	log.Fatal(http.ListenAndServe(addr, nil))
 }
 
@@ -98,11 +137,17 @@ func attestationKeyHandler(w http.ResponseWriter, r *http.Request) {
 		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "marshal failed"})
 		return
 	}
+
+	note := "Attestation key is currently ephemeral and rotates on restart. Persistence is on the roadmap."
+	if attestationPersistent {
+		note = "Attestation key is persistent and stable across restarts."
+	}
+
 	writeJSON(w, http.StatusOK, map[string]string{
 		"scheme":                 "ML-DSA-87",
 		"attestation_public_key": hex.EncodeToString(pkBytes),
 		"statement_format":       "qubex-attestation-v1|scheme=ML-DSA-87|pk_sha256=<hex>|msg_sha256=<hex>|result=<valid|invalid>|at=<RFC3339>",
-		"note":                   "Attestation key is currently ephemeral and rotates on restart. Persistence is on the roadmap.",
+		"note":                   note,
 	})
 }
 
