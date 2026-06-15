@@ -16,11 +16,12 @@ status is the point: anything not marked "Built" does not run yet.
   service's own ML-DSA-87 key and returned as a portable receipt,
   verifiable against the public key at /attestation-key. Runs today.
 
-## Planned
+- Persistent attestation key — the attestation key is loaded from a
+  fixed secret and is stable across restarts, giving the service a
+  permanent cryptographic identity that receipts can be pinned to.
+  Runs today.
 
-- Persistent attestation key — the attestation key is currently
-  ephemeral and rotates on restart. Persisting it gives the service
-  a stable identity receipts can be pinned to.
+## Planned
 
 - Institutional integration — calling the API as an added
   post-quantum check over existing ECDSA custody flows, no migration.
@@ -34,4 +35,4 @@ status is the point: anything not marked "Built" does not run yet.
 
 - On-chain anchoring of attestations: needed or not?
 
-_Last updated: 15 June 2026_
+_Last updated: 16 June 2026_
