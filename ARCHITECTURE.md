@@ -6,8 +6,7 @@ architecture it is being built toward. Each component is labelled so the
 two are never confused.
 
 ## Status legend
-
-- **[BUILT]** — exists and runs in this repository today
+- **[BUILT]** — exists and runs today
 - **[DESIGN]** — intended architecture, not yet implemented
 - **[RESEARCH]** — open question, not yet decided
 
@@ -35,39 +34,50 @@ audit and present to a regulator. That is the layer Qubex is building.
 ## 1. Cryptographic core  [BUILT]
 
 ML-DSA-87 (NIST FIPS 204, level 5) signing and verification, benchmarked
-for latency and correctness. This is the only component that runs today.
-Everything below is built on this primitive.
+for latency and correctness. This is the primitive everything below is
+built on.
 
-## 2. Validation API  [DESIGN]
+## 2. Verification API  [BUILT]
 
 A stateless service that accepts an ML-DSA-87 public key, message, and
-signature, verifies it, and returns a signed attestation of the result.
-
-The design goals:
+signature, verifies it, and returns the result together with a signed
+attestation. Holds no user keys and stores nothing. Runs today.
 
 - Stateless and horizontally scalable — verification is independent per
   request.
 - No custody of client funds or keys at any point.
-- An interface a custodian can call as an added check over their
-  existing ECDSA signing flow, without changing how they hold assets.
+- Each result is signed with the service's own ML-DSA-87 attestation
+  key and is verifiable against the public key at /attestation-key,
+  making the result a portable receipt.
 
-## 3. Institutional integration  [DESIGN]
+Honest limits of what runs today: the attestation signs *the result the
+service returned* — it does not yet prove the verification was performed
+correctly (see Research). The attestation key is currently ephemeral and
+rotates on restart (see below).
 
-Custodians call the Validation API as a post-quantum verification step
+## 3. Persistent attestation key  [DESIGN]
+
+The attestation key is currently ephemeral. Persisting it gives the
+service a stable cryptographic identity that receipts can be pinned to
+over time.
+
+## 4. Institutional integration  [DESIGN]
+
+Custodians call the Verification API as a post-quantum verification step
 alongside their current process. No chain migration, no wallet rotation
 for end clients, no smart-contract rewrites on the chains they use.
 
-The integration is meant to be additive: it sits beside existing
-infrastructure rather than replacing any part of it.
+The integration is additive: it sits beside existing infrastructure
+rather than replacing any part of it.
 
-## 4. Open questions  [RESEARCH]
+## 5. Open questions  [RESEARCH]
 
-- **Attestation format.** A plain signed verification result, or a
-  zero-knowledge proof that verification was performed correctly without
+- **ZK proof of correct verification.** The current attestation signs
+  the returned result; it does not prove the verification itself ran
+  correctly. A zero-knowledge proof would close that trust gap without
   revealing inputs.
 - **Trust model.** How a custodian confirms the API returned an honest
-  result — independent re-verification, on-chain anchoring of
-  attestations, or both.
+  result — independent re-verification, on-chain anchoring, or both.
 - **Anchoring.** Whether verification results need to be committed
   on-chain at all, and at what cost/benefit.
 
@@ -76,8 +86,8 @@ infrastructure rather than replacing any part of it.
 ## Design principles
 
 - **No migration.** Security is added where the assets already are.
-- **NIST-standard only.** ML-DSA (FIPS 204), so the cryptography is one a
-  regulated institution can stand behind.
+- **NIST-standard only.** ML-DSA (FIPS 204), so the cryptography is one
+  a regulated institution can stand behind.
 - **No custody.** Qubex verifies; it never holds keys or funds.
 - **Auditable.** Every claim in this document maps to a status label.
   What is built can be run. What is designed is marked as designed.
