@@ -2,6 +2,7 @@ package main
 
 import (
 	"crypto/rand"
+	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
 	"log"
@@ -19,10 +20,12 @@ type verifyRequest struct {
 }
 
 type verifyResponse struct {
-	Valid      bool   `json:"valid"`
-	Scheme     string `json:"scheme"`
-	VerifiedAt string `json:"verified_at"`
-	Error      string `json:"error,omitempty"`
+	Valid       bool   `json:"valid"`
+	Scheme      string `json:"scheme"`
+	VerifiedAt  string `json:"verified_at"`
+	Statement   string `json:"statement,omitempty"`
+	Attestation string `json:"attestation,omitempty"`
+	Error       string `json:"error,omitempty"`
 }
 
 type rootResponse struct {
@@ -31,10 +34,20 @@ type rootResponse struct {
 	Endpoints []string `json:"endpoints"`
 }
 
+var attestPK *mldsa87.PublicKey
+var attestSK *mldsa87.PrivateKey
+
 func main() {
+	pk, sk, err := mldsa87.GenerateKey(rand.Reader)
+	if err != nil {
+		log.Fatal("attestation key generation failed: ", err)
+	}
+	attestPK, attestSK = pk, sk
+
 	http.HandleFunc("/", rootHandler)
 	http.HandleFunc("/health", healthHandler)
 	http.HandleFunc("/verify", verifyHandler)
+	http.HandleFunc("/attestation-key", attestationKeyHandler)
 	http.HandleFunc("/demo", demoHandler)
 
 	port := os.Getenv("PORT")
@@ -56,7 +69,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, http.StatusOK, rootResponse{
 		Service:   "Qubex Sentinel Verification API",
 		Scheme:    "ML-DSA-87 (NIST FIPS 204, level 5)",
-		Endpoints: []string{"/health", "/verify (POST)", "/demo"},
+		Endpoints: []string{"/health", "/verify (POST)", "/attestation-key", "/demo"},
 	})
 }
 
@@ -64,6 +77,20 @@ func healthHandler(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, http.StatusOK, map[string]string{
 		"status": "ok",
 		"scheme": "ML-DSA-87",
+	})
+}
+
+func attestationKeyHandler(w http.ResponseWriter, r *http.Request) {
+	pkBytes, err := attestPK.MarshalBinary()
+	if err != nil {
+		writeJSON(w, http.StatusInternalServerError, map[string]string{"error": "marshal failed"})
+		return
+	}
+	writeJSON(w, http.StatusOK, map[string]string{
+		"scheme":                 "ML-DSA-87",
+		"attestation_public_key": hex.EncodeToString(pkBytes),
+		"statement_format":       "qubex-attestation-v1|scheme=ML-DSA-87|pk_sha256=<hex>|msg_sha256=<hex>|result=<valid|invalid>|at=<RFC3339>",
+		"note":                   "Attestation key is currently ephemeral and rotates on restart. Persistence is on the roadmap.",
 	})
 }
 
@@ -103,11 +130,30 @@ func verifyHandler(w http.ResponseWriter, r *http.Request) {
 
 	valid := mldsa87.Verify(&pk, msgBytes, nil, sigBytes)
 
-	writeJSON(w, http.StatusOK, verifyResponse{
+	at := time.Now().UTC().Format(time.RFC3339)
+	resp := verifyResponse{
 		Valid:      valid,
 		Scheme:     "ML-DSA-87",
-		VerifiedAt: time.Now().UTC().Format(time.RFC3339),
-	})
+		VerifiedAt: at,
+	}
+
+	pkHash := sha256.Sum256(pkBytes)
+	msgHash := sha256.Sum256(msgBytes)
+	result := "invalid"
+	if valid {
+		result = "valid"
+	}
+	statement := "qubex-attestation-v1|scheme=ML-DSA-87|pk_sha256=" +
+		hex.EncodeToString(pkHash[:]) + "|msg_sha256=" +
+		hex.EncodeToString(msgHash[:]) + "|result=" + result + "|at=" + at
+
+	attSig, signErr := attestSK.Sign(rand.Reader, []byte(statement), nil)
+	if signErr == nil {
+		resp.Statement = statement
+		resp.Attestation = hex.EncodeToString(attSig)
+	}
+
+	writeJSON(w, http.StatusOK, resp)
 }
 
 func demoHandler(w http.ResponseWriter, r *http.Request) {
