@@ -110,7 +110,7 @@ being wrong is the whole position.
 | ML-DSA-87 benchmark        | Built    |
 | Verification API           | Built    |
 | Signed attestation         | Built    |
-| Persistent attestation key | Design   |
+| Persistent attestation key | Built    |
 | ZK proof of verification   | Research |
 | Institutional integration  | Design   |
 
