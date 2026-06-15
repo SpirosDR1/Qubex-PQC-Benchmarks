@@ -10,30 +10,31 @@ built.
 
 ## Where things stand
 
-Built today: the ML-DSA-87 cryptographic core (FIPS 204, level 5),
-benchmarked for performance and correctness in the Qubex-PQC-Benchmarks
-repository.
+Built today:
+- The ML-DSA-87 cryptographic core (FIPS 204, level 5), benchmarked for
+  performance and correctness.
+- The Verification API — a live, stateless service that verifies an
+  ML-DSA-87 signature and returns the result with a signed attestation,
+  verifiable against a public key at /attestation-key. Early, but real.
 
-In development: the Validation API and the integration path described
-below. These are design, not live service. We say so plainly because a
-partner deciding whether to build on Qubex needs to know exactly what is
-real.
+In development: the integration path described below (Phases 1–3). The
+API exists; the institutional integration path has not yet been run with
+a partner. We say so plainly, because a partner deciding whether to build
+on Qubex needs to know exactly what is real.
 
 ## The integration path
 
 ### Phase 1 — Verification pilot
-
 - **Goal:** confirm, against the partner's real traffic patterns, that
   post-quantum verification meets their latency and throughput needs.
 - **How:** the partner sends verification requests (public key, message,
-  signature) to the Qubex Validation API in parallel with their existing
-  flow. Nothing in their production path changes; Qubex runs alongside as
-  an observer.
+  signature) to the Qubex Verification API in parallel with their
+  existing flow. Nothing in their production path changes; Qubex runs
+  alongside as an observer.
 - **Outcome:** measured latency and throughput data, and an honest
   assessment of fit — including where it doesn't fit yet.
 
 ### Phase 2 — Active verification layer
-
 - **Goal:** post-quantum assurance on the partner's highest-value
   operations.
 - **How:** critical transactions are verified through Qubex before the
@@ -44,7 +45,6 @@ real.
   chains they use or the keys their clients hold.
 
 ### Phase 3 — Standard integration
-
 - **Goal:** verification as a permanent, native part of the partner's
   process.
 - **How:** the Qubex verification step is built directly into the
