@@ -7,22 +7,31 @@ status is the point: anything not marked "Built" does not run yet.
 
 - ML-DSA-87 benchmark — sign/verify latency and correctness
   measurement (FIPS 204, level 5). Runs today in this repo.
-  
-- Validation API — a stateless /verify endpoint that accepts an
+
+- Verification API — a stateless /verify endpoint that accepts an
   ML-DSA-87 public key, message, and signature and returns whether
-  it verifies. Holds no keys, stores nothing. Runs today in this repo.
+  it verifies. Holds no user keys, stores nothing. Runs today.
+
+- Signed attestation — every verification result is signed with the
+  service's own ML-DSA-87 key and returned as a portable receipt,
+  verifiable against the public key at /attestation-key. Runs today.
 
 ## Planned
 
-- Attestation format — signed verification result, with research
-  into a zero-knowledge proof variant.
+- Persistent attestation key — the attestation key is currently
+  ephemeral and rotates on restart. Persisting it gives the service
+  a stable identity receipts can be pinned to.
+
 - Institutional integration — calling the API as an added
   post-quantum check over existing ECDSA custody flows, no migration.
 
-## Open questions
+## Research
+
+- ZK proof of correct verification — the current attestation signs
+  the result the service returned; it does not prove the verification
+  itself was performed correctly. A zero-knowledge proof would close
+  that trust gap.
 
 - On-chain anchoring of attestations: needed or not?
-- Trust model: how a custodian independently confirms a verification
-  result.
 
-_Last updated: 14 June 2026_
+_Last updated: 15 June 2026_
