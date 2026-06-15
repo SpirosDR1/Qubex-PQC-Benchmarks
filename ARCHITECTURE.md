@@ -50,16 +50,17 @@ attestation. Holds no user keys and stores nothing. Runs today.
   key and is verifiable against the public key at /attestation-key,
   making the result a portable receipt.
 
-Honest limits of what runs today: the attestation signs *the result the
+Honest limit of what runs today: the attestation signs *the result the
 service returned* — it does not yet prove the verification was performed
-correctly (see Research). The attestation key is currently ephemeral and
-rotates on restart (see below).
+correctly.
 
-## 3. Persistent attestation key  [DESIGN]
+## 3. Persistent attestation key  [BUILT]
 
-The attestation key is currently ephemeral. Persisting it gives the
-service a stable cryptographic identity that receipts can be pinned to
-over time.
+The attestation key is loaded from a fixed secret at startup and is
+stable across restarts. This gives the service a permanent cryptographic
+identity: a receipt issued today verifies against the same public key
+later, so receipts can be pinned. The private key is held only as a
+deployment secret and never committed to source.
 
 ## 4. Institutional integration  [DESIGN]
 
