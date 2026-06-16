@@ -26,6 +26,13 @@ status is the point: anything not marked "Built" does not run yet.
 - Institutional integration — calling the API as an added
   post-quantum check over existing ECDSA custody flows, no migration.
 
+- Security review — the near-term path is peer and community review:
+  direct engagement with cryptographers working on ML-DSA and the
+  underlying library, plus participation in the NIST PQC community.
+  A paid third-party audit becomes the right move once there's a
+  funded pilot or real institutional stake to justify it — not
+  before.
+
 ## Research
 
 - ZK proof of correct verification — the current attestation signs
