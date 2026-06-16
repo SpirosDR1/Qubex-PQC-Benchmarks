@@ -62,11 +62,6 @@ and stores nothing.
 Each verification result is signed with the service's own ML-DSA-87
 attestation key, making the result a portable receipt that anyone can
 verify independently against the published attestation public key
-(/attestation-key). Note: the attestation signs the *result the service
-returned* — it does not yet prove the verification was performed
-correctly. Each verification result is signed with the service's own ML-DSA-87
-attestation key, making the result a portable receipt that anyone can
-verify independently against the published attestation public key
 (/attestation-key). The attestation key is persistent and stable across
 restarts, so receipts can be pinned to a fixed identity. Note: the
 attestation signs the *result the service returned* — it does not yet
