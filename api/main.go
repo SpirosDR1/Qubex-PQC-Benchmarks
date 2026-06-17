@@ -82,6 +82,21 @@ func loadOrGenerateAttestationKey() (*mldsa87.PublicKey, *mldsa87.PrivateKey, bo
 	return pk, sk, false, nil
 }
 
+func withCORS(next http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+
+		if r.Method == http.MethodOptions {
+			w.WriteHeader(http.StatusNoContent)
+			return
+		}
+
+		next(w, r)
+	}
+}
+
 func main() {
 	pk, sk, persistent, err := loadOrGenerateAttestationKey()
 	if err != nil {
@@ -89,12 +104,12 @@ func main() {
 	}
 	attestPK, attestSK, attestationPersistent = pk, sk, persistent
 
-	http.HandleFunc("/", rootHandler)
-	http.HandleFunc("/health", healthHandler)
-	http.HandleFunc("/verify", verifyHandler)
-	http.HandleFunc("/verify-attestation", verifyAttestationHandler)
-	http.HandleFunc("/attestation-key", attestationKeyHandler)
-	http.HandleFunc("/demo", demoHandler)
+	http.HandleFunc("/", withCORS(rootHandler))
+	http.HandleFunc("/health", withCORS(healthHandler))
+	http.HandleFunc("/verify", withCORS(verifyHandler))
+	http.HandleFunc("/verify-attestation", withCORS(verifyAttestationHandler))
+	http.HandleFunc("/attestation-key", withCORS(attestationKeyHandler))
+	http.HandleFunc("/demo", withCORS(demoHandler))
 
 	port := os.Getenv("PORT")
 	if port == "" {
