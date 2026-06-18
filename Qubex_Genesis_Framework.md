@@ -32,9 +32,7 @@ on Qubex needs to know exactly what is real.
   signature) to the Qubex Verification API in parallel with their
   existing flow. Nothing in their production path changes; Qubex runs
   alongside as an observer.
-- **Duration:** 60 days, free. A fixed window, not open-ended — long
-  enough to see real traffic patterns (including peak-load variance),
-  short enough that both sides know when the decision point arrives.
+- **Duration:** 60 days, at no cost to the partner — one of a limited number of Phase 1 slots we're running personally, end to end. A fixed window, not open-ended — long enough to see real traffic patterns (including peak-load variance), short enough that both sides know when the decision point arrives.
 - **Outcome:** measured latency and throughput data, and an honest
   assessment of fit — including where it doesn't fit yet. At the end of
   the 60 days, we make a concrete call together: move to Phase 2, or
