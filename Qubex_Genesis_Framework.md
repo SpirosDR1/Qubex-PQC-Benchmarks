@@ -25,26 +25,39 @@ on Qubex needs to know exactly what is real.
 ## The integration path
 
 ### Phase 1 — Verification pilot
+
 - **Goal:** confirm, against the partner's real traffic patterns, that
   post-quantum verification meets their latency and throughput needs.
 - **How:** the partner sends verification requests (public key, message,
   signature) to the Qubex Verification API in parallel with their
   existing flow. Nothing in their production path changes; Qubex runs
   alongside as an observer.
+- **Duration:** 60 days, free. A fixed window, not open-ended — long
+  enough to see real traffic patterns (including peak-load variance),
+  short enough that both sides know when the decision point arrives.
 - **Outcome:** measured latency and throughput data, and an honest
-  assessment of fit — including where it doesn't fit yet.
+  assessment of fit — including where it doesn't fit yet. At the end of
+  the 60 days, we make a concrete call together: move to Phase 2, or
+  it's not the right fit yet.
 
 ### Phase 2 — Active verification layer
+
 - **Goal:** post-quantum assurance on the partner's highest-value
   operations.
 - **How:** critical transactions are verified through Qubex before the
   partner's system finalizes them. ML-DSA-87 verification becomes a
   required check on the assets that matter most.
+- **Pricing:** pay-per-verification, not a cut of asset value. Qubex
+  holds no keys and no funds, and pricing reflects that — a base
+  monthly commitment plus a per-call rate that scales down with volume.
+  Exact terms are set with each partner based on their real call volume
+  from the Phase 1 pilot, not a one-size number set in advance.
 - **Outcome:** the partner's most sensitive value carries a
   NIST-standard post-quantum verification step, with no change to the
   chains they use or the keys their clients hold.
 
 ### Phase 3 — Standard integration
+
 - **Goal:** verification as a permanent, native part of the partner's
   process.
 - **How:** the Qubex verification step is built directly into the
