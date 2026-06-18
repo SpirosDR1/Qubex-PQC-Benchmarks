@@ -87,6 +87,14 @@ curl -s -X POST localhost:8080/verify -H "Content-Type: application/json" -d @de
 Endpoints: `/` (info), `/health`, `/verify` (POST), `/attestation-key`,
 `/demo`.
 
+## Independent Validation
+
+Beyond the demo flow above, a standalone cross-check verifies the API's
+integration with cloudflare/circl directly — bypassing the HTTP layer
+entirely — across genuine, tampered, wrong-message, and wrong-key
+cases. See /validation for the script and what it does and doesn't
+prove.
+
 ## Methodology
 
 - Scheme: ML-DSA-87 (FIPS 204, level 5)
