@@ -38,8 +38,18 @@ status is the point: anything not marked "Built" does not run yet.
 - ZK proof of correct verification — the current attestation signs
   the result the service returned; it does not prove the verification
   itself was performed correctly. A zero-knowledge proof would close
-  that trust gap.
+  that trust gap. This is an open research problem — lattice
+  operations inside ZK circuits are computationally expensive and
+  not yet solved at production scale by anyone.
+
+- Hardware-attested verification (TEE) — running the verification
+  inside a hardware enclave (e.g., Intel SGX, AWS Nitro Enclaves)
+  would allow clients to verify correct execution without trusting
+  the service operator. This eliminates the current trust assumption
+  without requiring a ZK proof, but raises its own enclave
+  attestation management questions. A viable intermediate step
+  between the current model and a full ZK proof.
 
 - On-chain anchoring of attestations: needed or not?
 
-_Last updated: 16 June 2026_
+_Last updated: 19 June 2026_
