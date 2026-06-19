@@ -6,6 +6,7 @@ architecture it is being built toward. Each component is labelled so the
 two are never confused.
 
 ## Status legend
+
 - **[BUILT]** — exists and runs today
 - **[DESIGN]** — intended architecture, not yet implemented
 - **[RESEARCH]** — open question, not yet decided
@@ -76,9 +77,22 @@ rather than replacing any part of it.
 - **ZK proof of correct verification.** The current attestation signs
   the returned result; it does not prove the verification itself ran
   correctly. A zero-knowledge proof would close that trust gap without
-  revealing inputs.
+  revealing inputs. This is an open research problem — lattice
+  operations inside ZK circuits are computationally expensive and not
+  yet solved at production scale by anyone.
+
+- **Hardware-attested execution (TEE).** Running the verification inside
+  a hardware enclave (e.g., Intel SGX, AWS Nitro Enclaves) would allow
+  clients to verify correct execution without trusting the service
+  operator — eliminating the current trust assumption without requiring
+  a ZK proof. This raises its own enclave attestation management
+  questions and is a viable intermediate step between the current model
+  and a full ZK proof.
+
 - **Trust model.** How a custodian confirms the API returned an honest
-  result — independent re-verification, on-chain anchoring, or both.
+  result — independent re-verification, on-chain anchoring, TEE
+  attestation, or some combination.
+
 - **Anchoring.** Whether verification results need to be committed
   on-chain at all, and at what cost/benefit.
 
