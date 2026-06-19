@@ -65,8 +65,9 @@ verify independently against the published attestation public key
 (/attestation-key). The attestation key is persistent and stable across
 restarts, so receipts can be pinned to a fixed identity. Note: the
 attestation signs the *result the service returned* — it does not yet
-prove the verification was performed correctly. A zero-knowledge proof of
-correct verification is on the roadmap.
+prove the verification was performed correctly. A zero-knowledge proof
+of correct verification and hardware-attested execution (TEE) are both
+on the roadmap as research items.
 
 ```bash
 cd Qubex-PQC-Benchmarks
@@ -108,14 +109,15 @@ being wrong is the whole position.
 
 ## Status
 
-| Component                  | State    |
-|----------------------------|----------|
-| ML-DSA-87 benchmark        | Built    |
-| Verification API           | Built    |
-| Signed attestation         | Built    |
-| Persistent attestation key | Built    |
-| ZK proof of verification   | Research |
-| Institutional integration  | Design   |
+| Component                      | State    |
+|--------------------------------|----------|
+| ML-DSA-87 benchmark            | Built    |
+| Verification API               | Built    |
+| Signed attestation             | Built    |
+| Persistent attestation key     | Built    |
+| ZK proof of verification       | Research |
+| Hardware-attested exec (TEE)   | Research |
+| Institutional integration      | Design   |
 
 ## Contact
 
