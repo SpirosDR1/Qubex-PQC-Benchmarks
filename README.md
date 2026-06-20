@@ -13,10 +13,18 @@ relevant quantum computer exists. Custodians can't migrate to new
 chains: their positions, custody relationships, and compliance
 frameworks are fixed where they are.
 
-Qubex Sentinel is being built to give them post-quantum verification
-for the assets they already hold, on the chains they already use, with
-no migration. The standard that wins this will be the one institutions
-can put in front of a regulator. That's what we're building toward.
+Qubex Sentinel is being built as a NIST-standard verification checkpoint
+institutions can add inside their own authorization flow — independently
+checkable, no chain migration, no custody of keys or funds.
+
+Honest limit: this doesn't protect an already-exposed public key from an
+attacker broadcasting directly to the chain — only the chain itself can
+close that, through migration or opt-in account abstraction (e.g.
+Ethereum's EIP-8141 direction). What it adds is a verification checkpoint
+inside an institution's own process, and demonstrable readiness for
+what's coming. The standard that wins this narrower problem will be the
+one institutions can put in front of a regulator. That's what we're
+building toward.
 
 ## What's in this repo today
 
