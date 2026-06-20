@@ -36,7 +36,7 @@ func main() {
 	}
 	avgSign := time.Since(startSign).Nanoseconds() / int64(iterations)
 
-	sig, err := sk.Sign(nil, msg, nil)
+	sig, err := sk.Sign(rand.Reader, msg, nil)
 	if err != nil {
 		fmt.Println("Signing failed:", err)
 		return
