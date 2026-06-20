@@ -115,6 +115,9 @@ Level 5 is the highest ML-DSA parameter set. Larger signatures, maximum
 security margin — the conservative choice for custody, where the cost of
 being wrong is the whole position.
 
+### Raw Primitive Speed
+Isolated from network overhead, the ML-DSA-87 sign/verify operation itself benchmarks at approximately 687,000 ns (~687 µs) for signing and 58,000 ns (~58 µs) for verification, measured via the repo's own benchmark tool on an Intel Core i5-8265U @ 1.60GHz (a standard laptop CPU, not specialized hardware). These numbers use hedged (randomized) signing — the same mode the live API uses in production, not the faster deterministic mode. Verification, the operation the live API actually performs on every request, is meaningfully faster than signing — consistent with ML-DSA's design, where signing involves rejection sampling and verification doesn't.
+
 ## Status
 
 | Component                      | State    |
