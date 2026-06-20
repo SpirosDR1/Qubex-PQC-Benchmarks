@@ -26,9 +26,18 @@ already visible on-chain. Institutions cannot respond the way retail can:
   signature scheme is pre-consensus, and Ethereum's path spans multiple
   hard forks across years.
 
-What they need is a verification layer that adds post-quantum assurance
-to their existing ECDSA flows, on their existing chains, that they can
-audit and present to a regulator. That is the layer Qubex is building.
+What they need is a verification checkpoint inside their own existing
+authorization flows — NIST-standard, independently checkable, auditable
+and presentable to a regulator. That is the layer Qubex is building.
+
+Honest limit, stated plainly: this does not protect an already-exposed
+public key from an attacker broadcasting a forged signature directly to
+the chain. No external verification layer can — that is a base-layer
+protocol problem, closed only by chain migration or opt-in account
+abstraction (e.g. Ethereum's EIP-8141 direction, still in proposal
+stage as of mid-2026). What Qubex adds is narrower and real: a
+verification checkpoint inside the institution's own process, and
+demonstrable readiness for when that protocol-level path matures.
 
 ---
 
