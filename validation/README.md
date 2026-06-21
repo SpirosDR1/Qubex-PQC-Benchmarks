@@ -28,19 +28,22 @@ message ✓, wrong key ✓).
 ## Official NIST KAT validation
 
 `kat_check.go` validates cloudflare/circl's ML-DSA-87 implementation
-directly against 100 official, NIST-aligned known-answer test vectors
-from github.com/post-quantum-cryptography/KAT (deterministic, pure
-mode). Unlike cross_check.go, this calls circl directly rather than
-through the API, because the KAT vectors use a non-empty 16-byte
-context string, which the current /verify endpoint does not expose.
+directly against official, NIST-aligned known-answer test vectors from
+github.com/post-quantum-cryptography/KAT (pure mode). Unlike
+cross_check.go, this calls circl directly rather than through the API,
+because the KAT vectors use a non-empty 16-byte context string, which
+the current /verify endpoint does not expose.
 
-Run it yourself:
+Tested against both official signing modes:
 
 ```bash
 go run kat_check.go -file kat_MLDSA_87_det_pure.rsp
+go run kat_check.go -file kat_MLDSA_87_hedged_pure.rsp
 ```
 
-Last run result: 100/100 official vectors verified correctly.
+Last run result: 200/200 official vectors verified correctly — 100/100
+deterministic mode, 100/100 hedged mode (the mode the live API actually
+uses in production).
 
 ## What this does and doesn't prove
 
@@ -48,7 +51,8 @@ Together, these two checks confirm: (1) the API's bridge code correctly
 wires hex input to the cryptographic library across genuine and
 adversarial cases, and (2) the underlying ML-DSA-87 implementation
 itself produces correct results against official, independently-known
-test data — not just our own self-generated test cases.
+test data, in both signing modes — not just our own self-generated test
+cases.
 
 What's still open: this validates the cryptographic correctness of
 verification. It does not prove that a deployed instance of the API is
