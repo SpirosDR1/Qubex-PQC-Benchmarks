@@ -81,6 +81,8 @@ for end clients, no smart-contract rewrites on the chains they use.
 The integration is additive: it sits beside existing infrastructure
 rather than replacing any part of it.
 
+This is deliberately a different layer from MPC-based signing solutions, which replace signing infrastructure itself. Qubex doesn't touch signing — it adds an independent, separate check on top of whatever signing infrastructure an institution already runs.
+
 ## 5. Open questions  [RESEARCH]
 
 - **ZK proof of correct verification.** The current attestation signs
