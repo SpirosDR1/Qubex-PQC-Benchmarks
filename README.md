@@ -26,6 +26,8 @@ what's coming. The standard that wins this narrower problem will be the
 one institutions can put in front of a regulator. That's what we're
 building toward.
 
+Unlike MPC-based signing infrastructure (which replaces how an institution signs transactions), Qubex doesn't touch signing at all — it's a separate, independent check that works alongside whatever signing infrastructure an institution already uses.
+
 ## What's in this repo today
 
 A reproducible benchmark of ML-DSA-87 (NIST FIPS 204, security level 5)
