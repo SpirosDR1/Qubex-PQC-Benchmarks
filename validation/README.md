@@ -45,6 +45,10 @@ Last run result: 200/200 official vectors verified correctly — 100/100
 deterministic mode, 100/100 hedged mode (the mode the live API actually
 uses in production).
 
+<img width="622" height="182" alt="image" src="https://github.com/user-attachments/assets/0ef19dbe-91a5-48e8-8602-b7ef51e4a1eb" />
+
+<img width="622" height="190" alt="image" src="https://github.com/user-attachments/assets/c1712d32-7618-4e26-be85-073c3d005f2c" />
+
 ## What this does and doesn't prove
 
 Together, these two checks confirm: (1) the API's bridge code correctly
