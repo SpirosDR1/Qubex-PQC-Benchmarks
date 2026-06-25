@@ -148,7 +148,11 @@ Total: 2,100 requests, 0 failures, 0 incorrect verifications.
 Throughput plateau: ~110 req/sec (hosting limit, not cryptographic limit).
 When capacity was reached, requests queued rather than failing.
 
-Run it yourself: `go run loadtest.go -concurrency 10 -requests 525`
+Run it yourself: 
+
+```go
+go run loadtest.go -concurrency 10 -requests 525
+```
 
 ## Contact
 
