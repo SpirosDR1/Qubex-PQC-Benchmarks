@@ -132,6 +132,24 @@ Isolated from network overhead, the ML-DSA-87 sign/verify operation itself bench
 | Hardware-attested exec (TEE)   | Research |
 | Institutional integration      | Design   |
 
+## Load Test Results
+
+Tested against the live API (https://qubexsentinel-api.onrender.com) on
+standard free-tier hosting, no special optimization for the test.
+
+| Concurrency | Requests | Successes | Failures | Mean latency |
+|-------------|----------|-----------|----------|--------------|
+| 10          | 525      | 525       | 0        | ~248 ms      |
+| 50          | 525      | 525       | 0        | ~531 ms      |
+| 100         | 525      | 525       | 0        | ~939 ms      |
+| 200         | 525      | 525       | 0        | ~1.6 s       |
+
+Total: 2,100 requests, 0 failures, 0 incorrect verifications.
+Throughput plateau: ~110 req/sec (hosting limit, not cryptographic limit).
+When capacity was reached, requests queued rather than failing.
+
+Run it yourself: `go run loadtest.go -concurrency 10 -requests 525`
+
 ## Contact
 
 - Email: spyridongagr@qubexsentinel.com
